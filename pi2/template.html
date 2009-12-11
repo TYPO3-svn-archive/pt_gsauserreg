@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <title>User data form template</title>
+    <!-- $Id: template.html,v 1.17 2008/08/22 09:33:00 ry96 Exp $ -->
+  </head>
+
+  <body>
+
+<!-- ###SELECTFORM### begin -->
+
+<form name="user_form" method="POST" action="###FORMACTION###">
+  <input type="hidden" name="tx_ptgsauserreg_pi2[backURL]" value="###BACKURL###" />
+	###ITEMSELECTEDID###
+
+  <div class="tx_pttoolsButton">###ITEMSUBMIT### ###ITEMNEW### ###ITEMDELETE### ###ITEMBACK###</div>
+</form>
+
+<!-- ###SELECTFORM### end -->
+
+<!-- ###USERFORM### begin -->
+
+<form name="user_form" method="POST" action="###FORMACTION###">
+  <input type="hidden" name="tx_ptgsauserreg_pi2[backURL]" value="###BACKURL###" />
+
+  ###SECTIONSTARTUSER###
+        ###ITEMSALUTATION###
+		###ITEMTITLE###
+		###ITEMFIRSTNAME###
+		###ITEMLASTNAME###
+        ###ITEMCOMPANY###
+        ###ITEMDEPARTMENT###
+  ###SECTIONENDUSER###
+  
+  ###SECTIONSTARTSNAILMAIL###
+	###ITEMSTREETANDNO###
+	###ITEMZIP###
+	###ITEMCITY###
+	###ITEMSTATE###
+	###ITEMCOUNTRY###
+  ###SECTIONENDSNAILMAIL###
+
+  ###SECTIONSTARTMEDIA###
+	###ITEMPHONE1###
+	###ITEMFAX1###
+	###ITEMMOBILE1###
+	###ITEMEMAIL1###
+	###ITEMURL###
+  ###SECTIONENDMEDIA###
+
+  ###SECTIONSTARTMISC###
+		###ITEMUSERNAME###
+		###ITEMPASSWORD###
+		###ITEMISPRIVILEGED###
+		###ITEMISRESTRICTED###
+  ###SECTIONENDMISC###
+
+  <div>###FORMEXPLANATION###</div><br />
+
+  <div class="tx_pttoolsButton">###ITEMSUBMIT### ###ITEMBACK###</div>
+</form>
+
+<!-- ###USERFORM### end -->
+
+  </body>
+</html>

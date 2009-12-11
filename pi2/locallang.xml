@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Language labels for plugin &quot;tx_ptgsauserreg_pi2&quot;</description>
+        <type>database</type>
+        <csh_table></csh_table>
+        <labelContext type="array">
+        </labelContext>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="msg_nocust">No customer data found</label>
+            <label index="sl_user">User</label>
+            <label index="st_newuser">Please choose your login name and password</label>
+            <label index="fl_company">Company</label>
+            <label index="fl_department">Department</label>
+            <label index="fl_salutation">Salutation</label>
+            <label index="fc_salutation_count">2</label>
+            <label index="fc_salutation_1">Mr.</label>
+            <label index="fc_salutation_2">Mrs.</label>
+            <label index="fei_salutation">e.g.</label>
+            <label index="fl_title">Title</label>
+            <label index="fc_title_count">5</label>
+            <label index="fc_title_1">PhD</label>
+            <label index="fc_title_2">BA</label>
+            <label index="fc_title_3">MD</label>
+            <label index="fc_title_4">DD</label>
+            <label index="fc_title_5">Esq.</label>
+            <label index="fei_title">e.g.</label>
+            <label index="fl_firstname">First name</label>
+            <label index="fl_lastname">Last name</label>
+            <label index="sl_snailmail">Snail mail</label>
+            <label index="fl_streetAndNo">Street / Nr.</label>
+            <label index="fl_zip">Postal code</label>
+            <label index="fl_city">City</label>
+            <label index="fl_state">State</label>
+            <label index="fl_country">Country</label>
+            <label index="sl_media">Communication media</label>
+            <label index="fl_phone1">Telephone</label>
+            <label index="fl_fax1">Telefax</label>
+            <label index="fl_mobile1">Mobile phone</label>
+            <label index="fl_email1">Email address</label>
+            <label index="fl_url">Homepage</label>
+            <label index="sl_misc">Access data</label>
+            <label index="fl_username">Username</label>
+            <label index="fl_password">Password</label>
+            <label index="cl_password">-repeat-</label>
+            <label index="fl_isPrivileged">Privileged</label>
+            <label index="ft_isPrivileged">User can create and manage additional logins</label>
+            <label index="fl_isRestricted">Restricted</label>
+            <label index="ft_isRestricted">User can only manage products assigned to him</label>
+            <label index="bl_submit">Store</label>
+            <label index="bl_back">Cancel</label>
+            <label index="msg_stateneeded">For this country you need to fill in State.</label>
+            <label index="msg_userexists">This username is already in use, please choose another one.</label>
+            <label index="msg_pwmismatch">Your two password entries do not match.</label>
+            <label index="msg_pwshort">Your password is to short, please choose a longer one.</label>
+            <label index="msg_explain_required">designates required field</label>
+            <label index="msg_cancelled">Action cancelled.</label>
+            <label index="fl_selectedId">User</label>
+            <label index="bl_new">Add new user</label>
+            <label index="bl_submit_SelectForm">Modify selected user</label>
+            <label index="bl_delete">Delete selected user</label>
+        </languageKey>
+        <languageKey index="dk" type="array">
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="msg_nocust">Keine Kundendaten gefunden</label>
+            <label index="sl_user">Benutzer</label>
+            <label index="st_newuser">Bitte wählen Sie Ihren Login-Namen und Ihr Kennwort.</label>
+            <label index="fl_company">Firma</label>
+            <label index="fl_department">Abteilung</label>
+            <label index="fl_salutation">Anrede</label>
+            <label index="fc_salutation_count">2</label>
+            <label index="fc_salutation_1">Herr</label>
+            <label index="fc_salutation_2">Frau</label>
+            <label index="fei_salutation">z.B.</label>
+            <label index="fl_title">Titel</label>
+            <label index="fc_title_count">6</label>
+            <label index="fc_title_1">Dr.</label>
+            <label index="fc_title_2">Prof.</label>
+            <label index="fc_title_3">Prof. Dr.</label>
+            <label index="fc_title_4">Dipl.-Ing.</label>
+            <label index="fc_title_5">Mag.</label>
+            <label index="fc_title_6">Ing.</label>
+            <label index="fei_title">z.B.</label>
+            <label index="fl_firstname">Vorname</label>
+            <label index="fl_lastname">Nachname</label>
+            <label index="sl_snailmail">Anschrift</label>
+            <label index="fl_streetAndNo">Strasse / Hausnr.</label>
+            <label index="fl_zip">PLZ</label>
+            <label index="fl_city">Ort</label>
+            <label index="fl_state">Bundesstaat</label>
+            <label index="fl_country">Land</label>
+            <label index="sl_media">Telekontakte</label>
+            <label index="fl_phone1">Telefon</label>
+            <label index="fl_fax1">Telefax</label>
+            <label index="fl_mobile1">Handy</label>
+            <label index="fl_email1">Email</label>
+            <label index="fl_url">Homepage</label>
+            <label index="sl_misc">Zugangsdaten</label>
+            <label index="fl_username">Benutzer</label>
+            <label index="fl_password">Kennwort</label>
+            <label index="cl_password">wiederholen</label>
+            <label index="fl_isPrivileged">Privilegiert</label>
+            <label index="ft_isPrivileged">Benutzer kann weitere Logins anlegen und verwalten</label>
+            <label index="fl_isRestricted">Eingeschränkt</label>
+            <label index="ft_isRestricted">Benutzer kann nur zugewiesene Produkte verwalten</label>
+            <label index="bl_submit">Speichern</label>
+            <label index="bl_back">Abbrechen</label>
+            <label index="msg_stateneeded">Bundesstaat wird hier gebraucht.</label>
+            <label index="msg_userexists">Dieser Benutzername ist bereits vergeben, bitte wählen Sie einen anderen.</label>
+            <label index="msg_pwmismatch">Kennworteingaben stimmen nicht überein.</label>
+            <label index="msg_pwshort">Kennwort zu kurz, bitte wählen Sie ein längeres.</label>
+            <label index="msg_explain_required">Markierung für Pflichtfeld</label>
+            <label index="msg_cancelled">Vorgang abgebrochen.</label>
+            <label index="fl_selectedId">Benutzer</label>
+            <label index="bl_new">Neuen Benutzer hinzufügen</label>
+            <label index="bl_submit_SelectForm">Diesen Benutzer ändern</label>
+            <label index="bl_delete">Diesen Benutzer löschen</label>
+        </languageKey>
+        <languageKey index="no" type="array">
+        </languageKey>
+        <languageKey index="it" type="array">
+        </languageKey>
+        <languageKey index="fr" type="array">
+        </languageKey>
+        <languageKey index="es" type="array">
+        </languageKey>
+        <languageKey index="nl" type="array">
+        </languageKey>
+        <languageKey index="cz" type="array">
+        </languageKey>
+        <languageKey index="pl" type="array">
+        </languageKey>
+        <languageKey index="si" type="array">
+        </languageKey>
+        <languageKey index="fi" type="array">
+        </languageKey>
+        <languageKey index="tr" type="array">
+        </languageKey>
+        <languageKey index="se" type="array">
+        </languageKey>
+        <languageKey index="pt" type="array">
+        </languageKey>
+        <languageKey index="ru" type="array">
+        </languageKey>
+        <languageKey index="ro" type="array">
+        </languageKey>
+        <languageKey index="ch" type="array">
+        </languageKey>
+        <languageKey index="sk" type="array">
+        </languageKey>
+        <languageKey index="lt" type="array">
+        </languageKey>
+        <languageKey index="is" type="array">
+        </languageKey>
+        <languageKey index="hr" type="array">
+        </languageKey>
+        <languageKey index="hu" type="array">
+        </languageKey>
+        <languageKey index="gl" type="array">
+        </languageKey>
+        <languageKey index="th" type="array">
+        </languageKey>
+        <languageKey index="gr" type="array">
+        </languageKey>
+        <languageKey index="hk" type="array">
+        </languageKey>
+        <languageKey index="eu" type="array">
+        </languageKey>
+        <languageKey index="bg" type="array">
+        </languageKey>
+        <languageKey index="br" type="array">
+        </languageKey>
+        <languageKey index="et" type="array">
+        </languageKey>
+        <languageKey index="ar" type="array">
+        </languageKey>
+        <languageKey index="he" type="array">
+        </languageKey>
+        <languageKey index="ua" type="array">
+        </languageKey>
+        <languageKey index="lv" type="array">
+        </languageKey>
+        <languageKey index="jp" type="array">
+        </languageKey>
+        <languageKey index="vn" type="array">
+        </languageKey>
+        <languageKey index="ca" type="array">
+        </languageKey>
+        <languageKey index="ba" type="array">
+        </languageKey>
+        <languageKey index="kr" type="array">
+        </languageKey>
+        <languageKey index="eo" type="array">
+        </languageKey>
+        <languageKey index="my" type="array">
+        </languageKey>
+    </data>
+    <orig_hash type="array">
+        <languageKey index="default" type="array">
+            <label index="msg_nocust" type="integer">30352127</label>
+            <label index="sl_user" type="integer">150585321</label>
+            <label index="fl_company" type="integer">29846719</label>
+            <label index="fl_department" type="integer">30506169</label>
+            <label index="fl_salutation" type="integer">208251278</label>
+            <label index="fc_salutation_count" type="integer">209839912</label>
+            <label index="fc_salutation_1" type="integer">19351194</label>
+            <label index="fc_salutation_2" type="integer">124994602</label>
+            <label index="fei_salutation" type="integer">52948584</label>
+            <label index="fl_title" type="integer">192455458</label>
+            <label index="fc_title_count" type="integer">239969207</label>
+            <label index="fc_title_1" type="integer">150321466</label>
+            <label index="fc_title_2" type="integer">100434188</label>
+            <label index="fc_title_3" type="integer">131862758</label>
+            <label index="fc_title_4" type="integer">55623627</label>
+            <label index="fc_title_5" type="integer">127971293</label>
+            <label index="fei_title" type="integer">52948584</label>
+            <label index="fl_firstname" type="integer">34451647</label>
+            <label index="fl_lastname" type="integer">148108783</label>
+            <label index="sl_snailmail" type="integer">181853775</label>
+            <label index="fl_streetAndNo" type="integer">153452808</label>
+            <label index="fl_zip" type="integer">91417961</label>
+            <label index="fl_city" type="integer">92079470</label>
+            <label index="fl_state" type="integer">74066497</label>
+            <label index="fl_country" type="integer">93787849</label>
+            <label index="sl_media" type="integer">147378954</label>
+            <label index="fl_phone1" type="integer">187309708</label>
+            <label index="fl_fax1" type="integer">264154115</label>
+            <label index="fl_mobile1" type="integer">68956159</label>
+            <label index="fl_email1" type="integer">188054354</label>
+            <label index="fl_url" type="integer">54130594</label>
+            <label index="sl_misc" type="integer">237311929</label>
+            <label index="fl_username" type="integer">257964500</label>
+            <label index="fl_password" type="integer">231098347</label>
+            <label index="cl_password" type="integer">181546074</label>
+            <label index="fl_isPrivileged" type="integer">187784732</label>
+            <label index="ft_isPrivileged" type="integer">82045780</label>
+            <label index="fl_isRestricted" type="integer">248376925</label>
+            <label index="ft_isRestricted" type="integer">240070255</label>
+            <label index="bl_submit" type="integer">266013752</label>
+            <label index="bl_back" type="integer">245659783</label>
+            <label index="msg_stateneeded" type="integer">174014637</label>
+            <label index="msg_userexists" type="integer">141630361</label>
+            <label index="msg_pwmismatch" type="integer">74750984</label>
+            <label index="msg_explain_required" type="integer">100230992</label>
+            <label index="msg_cancelled" type="integer">106741034</label>
+            <label index="fl_selectedId" type="integer">150585321</label>
+            <label index="bl_new" type="integer">17761834</label>
+            <label index="bl_submit_SelectForm" type="integer">205963178</label>
+            <label index="bl_delete" type="integer">132168438</label>
+        </languageKey>
+        <languageKey index="dk" type="array">
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="msg_nocust" type="integer">30352127</label>
+            <label index="sl_user" type="integer">150585321</label>
+            <label index="fl_company" type="integer">29846719</label>
+            <label index="fl_department" type="integer">30506169</label>
+            <label index="fl_salutation" type="integer">208251278</label>
+            <label index="fc_salutation_count" type="integer">209839912</label>
+            <label index="fc_salutation_1" type="integer">19351194</label>
+            <label index="fc_salutation_2" type="integer">124994602</label>
+            <label index="fei_salutation" type="integer">52948584</label>
+            <label index="fl_title" type="integer">192455458</label>
+            <label index="fc_title_count" type="integer">239969207</label>
+            <label index="fc_title_1" type="integer">150321466</label>
+            <label index="fc_title_2" type="integer">100434188</label>
+            <label index="fc_title_3" type="integer">131862758</label>
+            <label index="fc_title_4" type="integer">55623627</label>
+            <label index="fc_title_5" type="integer">127971293</label>
+            <label index="fc_title_6" type="integer">222419149</label>
+            <label index="fei_title" type="integer">52948584</label>
+            <label index="fl_firstname" type="integer">34451647</label>
+            <label index="fl_lastname" type="integer">148108783</label>
+            <label index="sl_snailmail" type="integer">181853775</label>
+            <label index="fl_streetAndNo" type="integer">153452808</label>
+            <label index="fl_zip" type="integer">91417961</label>
+            <label index="fl_city" type="integer">92079470</label>
+            <label index="fl_state" type="integer">74066497</label>
+            <label index="fl_country" type="integer">93787849</label>
+            <label index="sl_media" type="integer">147378954</label>
+            <label index="fl_phone1" type="integer">187309708</label>
+            <label index="fl_fax1" type="integer">264154115</label>
+            <label index="fl_mobile1" type="integer">68956159</label>
+            <label index="fl_email1" type="integer">188054354</label>
+            <label index="fl_url" type="integer">54130594</label>
+            <label index="sl_misc" type="integer">237311929</label>
+            <label index="fl_username" type="integer">257964500</label>
+            <label index="fl_password" type="integer">231098347</label>
+            <label index="cl_password" type="integer">181546074</label>
+            <label index="fl_isPrivileged" type="integer">187784732</label>
+            <label index="ft_isPrivileged" type="integer">82045780</label>
+            <label index="fl_isRestricted" type="integer">248376925</label>
+            <label index="ft_isRestricted" type="integer">240070255</label>
+            <label index="bl_submit" type="integer">266013752</label>
+            <label index="bl_back" type="integer">245659783</label>
+            <label index="msg_stateneeded" type="integer">174014637</label>
+            <label index="msg_userexists" type="integer">141630361</label>
+            <label index="msg_pwmismatch" type="integer">74750984</label>
+            <label index="msg_explain_required" type="integer">100230992</label>
+            <label index="msg_cancelled" type="integer">106741034</label>
+            <label index="fl_selectedId" type="integer">150585321</label>
+            <label index="bl_new" type="integer">17761834</label>
+            <label index="bl_submit_SelectForm" type="integer">205963178</label>
+            <label index="bl_delete" type="integer">132168438</label>
+        </languageKey>
+        <languageKey index="no" type="array">
+        </languageKey>
+        <languageKey index="it" type="array">
+        </languageKey>
+        <languageKey index="fr" type="array">
+        </languageKey>
+        <languageKey index="es" type="array">
+        </languageKey>
+        <languageKey index="nl" type="array">
+        </languageKey>
+        <languageKey index="cz" type="array">
+        </languageKey>
+        <languageKey index="pl" type="array">
+        </languageKey>
+        <languageKey index="si" type="array">
+        </languageKey>
+        <languageKey index="fi" type="array">
+        </languageKey>
+        <languageKey index="tr" type="array">
+        </languageKey>
+        <languageKey index="se" type="array">
+        </languageKey>
+        <languageKey index="pt" type="array">
+        </languageKey>
+        <languageKey index="ru" type="array">
+        </languageKey>
+        <languageKey index="ro" type="array">
+        </languageKey>
+        <languageKey index="ch" type="array">
+        </languageKey>
+        <languageKey index="sk" type="array">
+        </languageKey>
+        <languageKey index="lt" type="array">
+        </languageKey>
+        <languageKey index="is" type="array">
+        </languageKey>
+        <languageKey index="hr" type="array">
+        </languageKey>
+        <languageKey index="hu" type="array">
+        </languageKey>
+        <languageKey index="gl" type="array">
+        </languageKey>
+        <languageKey index="th" type="array">
+        </languageKey>
+        <languageKey index="gr" type="array">
+        </languageKey>
+        <languageKey index="hk" type="array">
+        </languageKey>
+        <languageKey index="eu" type="array">
+        </languageKey>
+        <languageKey index="bg" type="array">
+        </languageKey>
+        <languageKey index="br" type="array">
+        </languageKey>
+        <languageKey index="et" type="array">
+        </languageKey>
+        <languageKey index="ar" type="array">
+        </languageKey>
+        <languageKey index="he" type="array">
+        </languageKey>
+        <languageKey index="ua" type="array">
+        </languageKey>
+        <languageKey index="lv" type="array">
+        </languageKey>
+        <languageKey index="jp" type="array">
+        </languageKey>
+        <languageKey index="vn" type="array">
+        </languageKey>
+        <languageKey index="ca" type="array">
+        </languageKey>
+        <languageKey index="ba" type="array">
+        </languageKey>
+        <languageKey index="kr" type="array">
+        </languageKey>
+        <languageKey index="eo" type="array">
+        </languageKey>
+        <languageKey index="my" type="array">
+        </languageKey>
+    </orig_hash>
+    <orig_text type="array">
+        <languageKey index="default" type="array">
+        </languageKey>
+        <languageKey index="dk" type="array">
+        </languageKey>
+        <languageKey index="de" type="array">
+        </languageKey>
+        <languageKey index="no" type="array">
+        </languageKey>
+        <languageKey index="it" type="array">
+        </languageKey>
+        <languageKey index="fr" type="array">
+        </languageKey>
+        <languageKey index="es" type="array">
+        </languageKey>
+        <languageKey index="nl" type="array">
+        </languageKey>
+        <languageKey index="cz" type="array">
+        </languageKey>
+        <languageKey index="pl" type="array">
+        </languageKey>
+        <languageKey index="si" type="array">
+        </languageKey>
+        <languageKey index="fi" type="array">
+        </languageKey>
+        <languageKey index="tr" type="array">
+        </languageKey>
+        <languageKey index="se" type="array">
+        </languageKey>
+        <languageKey index="pt" type="array">
+        </languageKey>
+        <languageKey index="ru" type="array">
+        </languageKey>
+        <languageKey index="ro" type="array">
+        </languageKey>
+        <languageKey index="ch" type="array">
+        </languageKey>
+        <languageKey index="sk" type="array">
+        </languageKey>
+        <languageKey index="lt" type="array">
+        </languageKey>
+        <languageKey index="is" type="array">
+        </languageKey>
+        <languageKey index="hr" type="array">
+        </languageKey>
+        <languageKey index="hu" type="array">
+        </languageKey>
+        <languageKey index="gl" type="array">
+        </languageKey>
+        <languageKey index="th" type="array">
+        </languageKey>
+        <languageKey index="gr" type="array">
+        </languageKey>
+        <languageKey index="hk" type="array">
+        </languageKey>
+        <languageKey index="eu" type="array">
+        </languageKey>
+        <languageKey index="bg" type="array">
+        </languageKey>
+        <languageKey index="br" type="array">
+        </languageKey>
+        <languageKey index="et" type="array">
+        </languageKey>
+        <languageKey index="ar" type="array">
+        </languageKey>
+        <languageKey index="he" type="array">
+        </languageKey>
+        <languageKey index="ua" type="array">
+        </languageKey>
+        <languageKey index="lv" type="array">
+        </languageKey>
+        <languageKey index="jp" type="array">
+        </languageKey>
+        <languageKey index="vn" type="array">
+        </languageKey>
+        <languageKey index="ca" type="array">
+        </languageKey>
+        <languageKey index="ba" type="array">
+        </languageKey>
+        <languageKey index="kr" type="array">
+        </languageKey>
+        <languageKey index="eo" type="array">
+        </languageKey>
+        <languageKey index="my" type="array">
+        </languageKey>
+    </orig_text>
+</T3locallang>

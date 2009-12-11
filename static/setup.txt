@@ -1,0 +1,36 @@
+// all settings assigned originate from /res/static/constants.txt
+// $Id: setup.txt,v 1.18 2009/01/09 12:31:17 ry96 Exp $
+
+config.pt_gsauserreg {
+
+	feusersSysfolderPid = {$config.pt_gsauserreg.feusersSysfolderPid}
+
+	hostCountry = {$config.pt_gsauserreg.hostCountry}
+	hostLanguage = {$config.pt_gsauserreg.hostLanguage}
+	allowedCountries = {$config.pt_gsauserreg.allowedCountries}
+	fixedDebitor = {$config.pt_gsauserreg.fixedDebitor}
+	euVatIdCheck = {$config.pt_gsauserreg.euVatIdCheck}
+	hideBirtdate = {$config.pt_gsauserreg.hideBirtdate}
+	editBanking = {$config.pt_gsauserreg.editBanking}
+	checkBanking = {$config.pt_gsauserreg.checkBanking}
+	pathCheckBanking = {$config.pt_gsauserreg.pathCheckBanking}
+	debitCountries = {$config.pt_gsauserreg.debitCountries}
+	ccAllow = {$config.pt_gsauserreg.ccAllow}
+	invoiceAlways = {$config.pt_gsauserreg.invoiceAlways}
+	invoiceBusiness = {$config.pt_gsauserreg.invoiceBusiness}
+	invoiceEuvatid = {$config.pt_gsauserreg.invoiceEuvatid}
+	alwaysVAT = {$config.pt_gsauserreg.alwaysVAT}
+	miniCustUser = {$config.pt_gsauserreg.miniCustUser}
+	defaultGroup = {$config.pt_gsauserreg.defaultGroup}
+	privilegedGroup = {$config.pt_gsauserreg.privilegedGroup}
+	newCustGroup = {$config.pt_gsauserreg.newCustGroup}
+	autoLogin = {$config.pt_gsauserreg.autoLogin}
+	cryptPw = {$config.pt_gsauserreg.cryptPw}
+	
+	virtualTableCustNo = vtmhKundnr
+	minKundNr = {$config.pt_gsauserreg.minKundNr}
+	maxKundNr = {$config.pt_gsauserreg.maxKundNr}
+	defaultCreditLimit = {$config.pt_gsauserreg.defaultCreditLimit}
+
+}
+

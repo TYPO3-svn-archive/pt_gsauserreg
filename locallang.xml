@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Language labels for extension pt_gsauserreg</description>
+        <type>database</type>
+        <csh_table></csh_table>
+        <labelContext type="array">
+        </labelContext>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="pi1_title">GSA Userreg: Customer Data</label>
+            <label index="pi1_plus_wiz_description">Create/edit customer data (GSA based)</label>
+            <label index="pi2_title">GSA Userreg: User Data</label>
+            <label index="pi2_plus_wiz_description">GSA Userreg: Add/edit/delete FE user data</label>
+            <label index="pi3_title">GSA Userreg: Customer Groups</label>
+            <label index="pi3_plus_wiz_description">GSA Userreg: organize users in customer specific groups</label>
+            <label index="pi4_title">GSA Userreg: Postal Addresses</label>
+            <label index="pi4_plus_wiz_description">GSA Userreg: Add/edit/delete additional postal addresses</label>
+            <label index="pi5_title">GSA Userreg: Admin Interface</label>
+            <label index="pi5_plus_wiz_description">GSA Userreg: Search/administrate/switch to users (admin only)</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="pi1_title">GSA Userreg: Kundendaten</label>
+            <label index="pi1_plus_wiz_description">GSA Userreg: Kundendaten anlegen/ändern (GSA basiert)</label>
+            <label index="pi2_title">GSA Userreg: Benutzerdaten</label>
+            <label index="pi2_plus_wiz_description">GSA Userreg: Benutzerdaten anlegen/ändern/löschen</label>
+            <label index="pi3_title">GSA Userreg: Kundengruppen</label>
+            <label index="pi3_plus_wiz_description">GSA Userreg: Kunden spezifischen Kundengruppen zuordnen</label>
+            <label index="pi4_title">GSA Userreg: Lieferadressen</label>
+            <label index="pi4_plus_wiz_description">GSA Userreg: Zusätzliche Lieferadressen anlegen/ändern/löschen</label>
+            <label index="pi5_title">GSA Userreg: GSA Userreg: Admin Interface</label>
+            <label index="pi5_plus_wiz_description">GSA Userreg: Suchen/bearbeiten/wechseln zu anderen Kunden (nur für Administration)</label>
+        </languageKey>
+    </data>
+</T3locallang>

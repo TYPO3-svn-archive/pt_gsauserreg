@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Language labels for plugin &quot;tx_ptgsauserreg_pi5&quot;</description>
+        <type>database</type>
+        <csh_table></csh_table>
+        <labelContext type="array">
+        </labelContext>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="fl_gsa_kundnr">GSA Customer No.</label>
+            <label index="fl_username">Username</label>
+            <label index="fl_company">Company</label>
+            <label index="fl_firstname">First Name</label>
+            <label index="fl_lastname">Last Name</label>
+            <label index="fl_streetAndNo">Street / Nr.</label>
+            <label index="fl_zip">ZIP Code</label>
+            <label index="fl_city">City</label>
+            <label index="fl_email1">Email</label>
+            <label index="fl_exactMatch">Match type</label>
+            <label index="ft_exactMatch">only exact matches</label>
+            <label index="bl_submit_SearchForm">Search</label>
+            <label index="msg_searchreq">Please fill in at least one search criteria</label>
+            <label index="msg_toomany">Too many users found, please refine search criteria</label>
+            <label index="msg_notfound">No users found for your search criteria</label>
+            <label index="fl_selectedId">Please select user</label>
+            <label index="bl_submit_SelectForm">Login as selected user</label>
+            <label index="bl_submit">Submit</label>
+            <label index="bl_back">back</label>
+            <label index="bl_reset">Clear form fields</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="fl_gsa_kundnr">GSA Kundennr.</label>
+            <label index="fl_username">Benutzername</label>
+            <label index="fl_company">Firma</label>
+            <label index="fl_firstname">Vorname</label>
+            <label index="fl_lastname">Nachname</label>
+            <label index="fl_streetAndNo">Strasse / Hausnr.</label>
+            <label index="fl_zip">PLZ</label>
+            <label index="fl_city">Ort</label>
+            <label index="fl_email1">Email</label>
+            <label index="fl_exactMatch">Suchart</label>
+            <label index="ft_exactMatch">nur genaue Übereinstimmung</label>
+            <label index="bl_submit_SearchForm">Benutzer suchen</label>
+            <label index="msg_searchreq">Bitte mindestens ein Suchkriterium eingeben</label>
+            <label index="msg_toomany">Zu viele Benutzer gefunden, bitte Suchparameter präzisieren</label>
+            <label index="msg_notfound">Keine Benutzer für Ihre Eingaben gefunden</label>
+            <label index="fl_selectedId">Bitte auswählen</label>
+            <label index="bl_submit_SelectForm">Als dieser Benutzer anmelden</label>
+            <label index="bl_back">Zurück</label>
+            <label index="bl_submit">Absenden</label>
+            <label index="bl_reset">Formularfelder löschen</label>
+        </languageKey>
+    </data>
+</T3locallang>

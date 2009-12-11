@@ -1,0 +1,4 @@
+plugin.tx_ptgsauserreg_pi5 {
+	templateFile = {$plugin.pt_gsauserreg_pi5.templateFile}
+	nextPage = {$plugin.pt_gsauserreg_pi5.nextPage}
+}

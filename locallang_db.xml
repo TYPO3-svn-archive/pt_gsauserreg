@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Language labels for database tables/fields belonging to extension &quot;pt_gsauserreg&quot;</description>
+        <type>database</type>
+        <csh_table></csh_table>
+        <labelContext type="array">
+        </labelContext>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="tx_ptgsauserreg_customergroups">GSA customer specific groups</label>
+            <label index="tx_ptgsauserreg_customergroups.title">Title</label>
+            <label index="tx_ptgsauserreg_customergroups.gsa_adresse_id">Address UID in GSA-DB</label>
+            <label index="tx_ptgsauserreg_gsansch">GSA additional postal addresses</label>
+            <label index="tx_ptgsauserreg_gsansch.gsa_adresse_id">Customer address UID in GSA-DB</label>
+            <label index="tx_ptgsauserreg_gsansch.gsa_ansch_id">Postal address UID in GSA-DB</label>
+            <label index="tx_ptgsauserreg_gsansch.deprecated">address no longer in use</label>
+            <label index="tx_ptgsauserreg_gsansch.company">Company</label>
+            <label index="tx_ptgsauserreg_gsansch.salutation">Salutation</label>
+            <label index="tx_ptgsauserreg_gsansch.title">Title</label>
+            <label index="tx_ptgsauserreg_gsansch.firstname">First name</label>
+            <label index="tx_ptgsauserreg_gsansch.lastname">Last name</label>
+            <label index="tx_ptgsauserreg_gsansch.street">Street / Nr.</label>
+            <label index="tx_ptgsauserreg_gsansch.supplement">Address supplement</label>
+            <label index="tx_ptgsauserreg_gsansch.zip">ZIP-Code</label>
+            <label index="tx_ptgsauserreg_gsansch.city">City</label>
+            <label index="tx_ptgsauserreg_gsansch.pobox">P.O.-Box</label>
+            <label index="tx_ptgsauserreg_gsansch.poboxzip">P.O.-Box ZIP-Code</label>
+            <label index="tx_ptgsauserreg_gsansch.poboxcity">P.O.-Box City</label>
+            <label index="tx_ptgsauserreg_gsansch.state">State / Province / Region</label>
+            <label index="tx_ptgsauserreg_gsansch.country">Country</label>
+            <label index="fe_users.tx_ptgsauserreg_gsa_adresse_id">GSA master address UID</label>
+            <label index="fe_users.tx_ptgsauserreg_salutation">Salutation</label>
+            <label index="fe_users.tx_ptgsauserreg_firstname">First Name</label>
+            <label index="fe_users.tx_ptgsauserreg_lastname">Last Name</label>
+            <label index="fe_users.tx_ptgsauserreg_department">Department</label>
+            <label index="fe_users.tx_ptgsauserreg_state">State</label>
+            <label index="fe_users.tx_ptgsauserreg_country">Country</label>
+            <label index="fe_users.tx_ptgsauserreg_mobile">Mobile phone</label>
+            <label index="fe_users.tx_ptgsauserreg_isprivileged">GSA: Privileged User</label>
+            <label index="fe_users.tx_ptgsauserreg_isrestricted">GSA: Restricted User</label>
+            <label index="fe_users.tx_ptgsauserreg_customergroups_uid">GSA customer group membership</label>
+            <label index="fe_users.tx_ptgsauserreg_defbilladdr_uid">GSA default billing address UID</label>
+            <label index="fe_users.tx_ptgsauserreg_defshipaddr_uid">GSA default shipping address UID</label>
+            <label index="tt_content.list_type_pi1">GSA Userreg: Customer Data</label>
+            <label index="tt_content.list_type_pi2">GSA Userreg: User Data</label>
+            <label index="tt_content.list_type_pi3">GSA Userreg: Customer Groups</label>
+            <label index="tt_content.list_type_pi4">GSA Userreg: Postal Addresses</label>
+            <label index="tt_content.list_type_pi5">GSA Userreg: Admin Interface</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="tx_ptgsauserreg_customergroups">Kundenspezifische Gruppen</label>
+            <label index="tx_ptgsauserreg_customergroups.title">Titel</label>
+            <label index="tx_ptgsauserreg_customergroups.gsa_adresse_id">Adresse UID in GSA-DB</label>
+            <label index="tx_ptgsauserreg_gsansch">Zusätzliche Adressen</label>
+            <label index="tx_ptgsauserreg_gsansch.gsa_adresse_id">Kunden Adresse UID in GSA-DB</label>
+            <label index="tx_ptgsauserreg_gsansch.gsa_ansch_id">Lieferadresse UID in GSA-DB</label>
+            <label index="tx_ptgsauserreg_gsansch.deprecated">Adresse wird nicht mehr benutzt</label>
+            <label index="tx_ptgsauserreg_gsansch.company">Firma</label>
+            <label index="tx_ptgsauserreg_gsansch.salutation">Anrede</label>
+            <label index="tx_ptgsauserreg_gsansch.title">Titel</label>
+            <label index="tx_ptgsauserreg_gsansch.firstname">Vorname</label>
+            <label index="tx_ptgsauserreg_gsansch.lastname">Nachname</label>
+            <label index="tx_ptgsauserreg_gsansch.street">Straße / Hausnr.</label>
+            <label index="tx_ptgsauserreg_gsansch.supplement">Adresszusatz</label>
+            <label index="tx_ptgsauserreg_gsansch.zip">PLZ</label>
+            <label index="tx_ptgsauserreg_gsansch.city">Stadt</label>
+            <label index="tx_ptgsauserreg_gsansch.pobox">Postfach</label>
+            <label index="tx_ptgsauserreg_gsansch.poboxzip">Postfach PLZ</label>
+            <label index="tx_ptgsauserreg_gsansch.poboxcity">Postfach Stadt</label>
+            <label index="tx_ptgsauserreg_gsansch.state">Bundesland / Staat</label>
+            <label index="tx_ptgsauserreg_gsansch.country">Land</label>
+            <label index="fe_users.tx_ptgsauserreg_gsa_adresse_id">Adresse UID in GSA-DB</label>
+            <label index="fe_users.tx_ptgsauserreg_salutation">Anrede</label>
+            <label index="fe_users.tx_ptgsauserreg_firstname">Vorname</label>
+            <label index="fe_users.tx_ptgsauserreg_lastname">Nachname</label>
+            <label index="fe_users.tx_ptgsauserreg_department">Abteilung</label>
+            <label index="fe_users.tx_ptgsauserreg_state">Bundesland / Staat</label>
+            <label index="fe_users.tx_ptgsauserreg_country">Land</label>
+            <label index="fe_users.tx_ptgsauserreg_mobile">Mobile</label>
+            <label index="fe_users.tx_ptgsauserreg_isprivileged">Privilegierter Benutzer</label>
+            <label index="fe_users.tx_ptgsauserreg_isrestricted">Eingeschränkter Benuzer</label>
+            <label index="fe_users.tx_ptgsauserreg_customergroups_uid">Kundengruppen Id</label>
+            <label index="fe_users.tx_ptgsauserreg_defbilladdr_uid">GSA UID der voreingestellten Rechnungsadresse</label>
+            <label index="fe_users.tx_ptgsauserreg_defshipaddr_uid">GSA UID der voreingestellten Lieferadresse</label>
+            <label index="tt_content.list_type_pi1">GSA Userreg: Kundendaten</label>
+            <label index="tt_content.list_type_pi2">GSA Userreg: Benutzerdaten</label>
+            <label index="tt_content.list_type_pi3">GSA Userreg: Kundengruppen</label>
+            <label index="tt_content.list_type_pi4">GSA Userreg: Adressen</label>
+            <label index="tt_content.list_type_pi5">GSA Userreg: Admin Interface / Kunden wechseln</label>
+        </languageKey>
+    </data>
+
+</T3locallang>

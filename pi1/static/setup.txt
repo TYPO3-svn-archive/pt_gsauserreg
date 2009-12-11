@@ -1,0 +1,11 @@
+plugin.tx_ptgsauserreg_pi1 {
+	templateFile = {$plugin.pt_gsauserreg_pi1.templateFile}
+	bankPage = {$plugin.pt_gsauserreg_pi1.bankPage}
+	nextPage = {$plugin.pt_gsauserreg_pi1.nextPage}
+	requirePhone = {$plugin.pt_gsauserreg_pi1.requirePhone}
+	addressFormRequiredList = {$plugin.pt_gsauserreg_pi1.addressFormRequiredList}
+	addressFormHideList = {$plugin.pt_gsauserreg_pi1.addressFormHideList}
+	bankFormHideList = {$plugin.pt_gsauserreg_pi1.bankFormHideList}
+	showAddressValuesOnly = {$plugin.pt_gsauserreg_pi1.showAddressValuesOnly}
+	useShortAddressLabelFormat = {$plugin.pt_gsauserreg_pi1.useShortAddressLabelFormat}	
+}

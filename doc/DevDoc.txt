@@ -1,0 +1,158 @@
+********************************************************************************
+DevDoc.txt: Development notes for EXT pt_gsauserreg
+Author: Wolfgang Zenker, Dorit Rottner et. al.
+--------------------------------------------------------------------------------
+
+Legend:
+FIX: fixed a bug
+CHG: changed items/features
+ADD: added feature
+RMV: removed item
+RFT: refactoring / code cleanup
+TODO: todo
+********************************************************************************
+
+
+TODO: As of 10.12.2009
+====
+
+- TODO: Herausfinden, warum das löschen der session-daten im Hook nicht geht und reparieren.
+- TODO: session Handling überarbeiten, damit nach Abbruch nicht aud z.B. Bankdaten stehen bleiben 
+- TODO: Dokumentation Beispiel für Einrichtung Userreg
+- TODO: char(2) Felder werden bei UTF-8 Datenbanken mit varchar(2) angelegt (Allgemenie Vorhensweise für ganzen Shop)
+- TODO: Lieferadressverwaltung: sinnvolleres Verhalten beim Versuch, die Masteradresse zu bearbeiten
+- TODO: Lieferadressverwaltung: default-Lieferadresse setzbar machenx
+
+
+
+================================================================================
+CHANGELOG
+================================================================================
+
+v0.1.1dev:
+------
++ (rk) RFT: standardized this file DevDoc.txt
++ (rk) CHG: changed extension short description in ext_emconf.php
++ (dl) Added constant key useShortAddressLabelFormat. If activated, the postlabels are set without the salutaion line.
++ (dl) Added functionality to inherit groups from the current user to a newly created user. The groups wich are allowed to inherit are defined in constants.
++ (wz) if user does not enter bank account data, automatically generated account holder name is removed from record
++ (wz) new config flag "alwaysVAT": all customers have to pay VAT regardless of location
++ (wz) Only display credit card as payment choice, if credit card payments are allowed
++ (wz) Display hint in bank name field, if it is to be filled automatically
++ (dl) Made the hideArray of the registration form fields configurable with typoscript - Keys: bankFormHideList, addressFormHideList
++ (dl) Added addressFormRequiredList to the constants to define the required fields 
++ (dl) Added simulateGetterSetterHook to user and customer class. This makes it possible to extend the getter and setter and with it the user and customer forms
++ (dl) Added Key showAddressValuesOnly to Typoscript to switch the customer form from editable to only show.
+
+
+
+================================================================================
+CHANGELOG - ARCHIVE
+================================================================================
+v0.1.0:
+-------
+Caveats:
+  + ==> CAUTION! when updating, the extension has to be updated with the Extension Manager to define the tsConfigurationPid <==
++ ext_emconf: 
+   + (rk) dependencies erhöht:
+            pt_gsasocket' => '0.3.0-', 'pt_tools' => '0.4.1-'
++ Konfiguration:
+  + new ext_em_conf.txt to define tsConfigurationPid
+  + (rk) constants.txt: Reihenfolge und Unterteilung geändert (enable features separiert)
+  + (wz) neues Constant-Editor-Flag requirePhone für pi1 und pi2
+  + (wz) neue Konstante hideBirtdate: kein Geburtsdatum bei Kundenregistrierung
+  + (dr) Konstanten euVatIdCheck und checkBanking default auf aus
+  + bankPage Vorschlagswert von nichts zu 'bankdata' gändert (d.h. Seite mit plugin Customer Data muss per default angelegt weren)
++ Formulare:
+  + (wz) Kontoinhaber initialisieren mit "Nachname, Vorname" bei Personen
+  + (wz) Kontoinhaber nur initialisieren, wenn PM_DEBIT gesetzt; beim Initialisieren Längenbeschränkung auf 27 Zeichen beachten
+  + (wz) Auf dem Userdatenformular für einen sich neu registrierenden User wird ein Erläuterungstext eingeblendet, dass er hier Benutzername und Kennwort wählt.
+  + (wz) Auf Bankdatenformular ggf. einen Hinweis einblenden, das bei Änderung der Zahlungsmethode keine Kontodaten erforderlich sind.
+  + (wz) Verwende splitdate-feld für Geburtsdatum
++ Ablauf:
+  + (wz) überspringe Warnmeldungen von ktoblzcheck wegen veralteter Daten, dadurch funktioniert der Check zumindest meistens auch dann, wenn die ktoblzcheck version veraltet ist.
+  + (wz) Wenn separate Bankdatenseite definiert ist, dann kommt dort immer das Bankdatenformular.
+  + (wz) hook derzeit deaktiviert, da die kompletten sessiondaten verschwinden
+  + (wz) hook für t3lib_userauth hinzugefügt, der bei login und logout den Sessionstorage dieser Extension löscht
++ Inline-Dokumentation:
+  + (fb) PHPDoc-Kommentare angepasst
+  + (dr) Beschreibungstexte für Konstanteneditor erweitert  
+  + (dr) In plugin pi4 Meldungen für 'Kein Benutzer angemeldet' und 'Keine weiterführende Seite angegeben!' aus locallang genommen.
++ API-Änderungen:
+  + (wz) mahnungsbezogene Properties im customer ergänzt
+  + (wz) tx_ptgsauserreg_customer: Neue Methode getTransactionVolume() liefert den bisherigen kumulierten Umsatz.
++ Interne Änderungen:
+  + (fb/dr) new static Class: tx_ptgsauserreg_lib
+    + new Method: tx_ptgsauserreg_lib::getGsaUserregConfig(), which gets the configuration via the typoscriptRegistry-Method of pt_tools independent of the Modus
+    + replace $GLOBAL['TSFE']->tmpl...  in directory res/* (for the plugins pi*/ not necessary, because we are always in FE-Modus) with tx_ptgsauserreg_lib::getGsaUserregConfig()
+  + (dr) Adaption for new optional "2-in-1" database concept:
+    + ptgsauserreg_customerAccessor, tx_ptgsauserreg_gsanschAccessor: adapted all accessor classes to new concept:
+    + called all database table names with new tx_ptgsasocket_gsaDbAccessor-method getTableName()
+    + removed all trace(tx_pttools_div::returnLastBuilt*Query()) calls (trace is done within tx_ptgsasocket_gsaDbConnector::*query() now)
+  + (wz) Post1-7 felder werden mit default-adresse befüllt, wenn leer
+  + (fb) tx_ptgsauserreg_userAccessor::storeUserData() Feld "country" auch ohne $GLOBALS['TSFE']->config['config']['language'] möglich (dann default Sprache)
+
+v0.0.12:
+-------
++ (rk) "GS AUFTRAG"Bereinigung + TCA-/Usability-Improvements
+  + description in ext_emconf geändert
+  + Labels und Kommentare in div. Dateien geändert
++ (dr) Dokumentationsheader eingefügt für die Klasse und Methoden in sämtlichen plugins
+  + Sämtliche Pid's in Konstanten tu PID or alias erweitert
+  + Erweiterung Beschreibung der Konstanten
+  + Konstante userDataPid entfernt aus plugin pi4
+  + fixedDebitor: DefaultWert 10000 anstatt leer
+  + ccAllow: DefaultWert 0 anstatt 1
+  + minKundNr: DefaultWert 1 anstatt 25000
+  +	maxKundNr: DefaultWert 99999999 anstatt 69999
+  + virtualTableCustNo = vtmhKundnr nur noch in setup.txt, da Voraussetzung für GSA Database
+  + Erste Version von Manual
++ (rk) alle doc/px_*.sql Dateien gelöscht:
+  + px_laender.sql: dies wird jetzt in pt_gsasocket/res/sql zur Verfügung gestellt
+  + px_ZahlArtNeu.sql: wird wohl nicht verwendet, erstmal entfernt
++ (wz) Added Hooks to display*Form() and process*Form() in all PI's
++ (wz) Added Hooks to PI's to manipulate formdesc array at init of main()
++ (wz) customerCollection erweitert, so dass auch Kunden ohne ONLINEKUNDE
+  geladen werden koennen
++ (wz) pt_euvatcheck optional machen (Häkchen im constant editor)
++ (wz) Beim Laden der gsanschCollection wird geprüft, ob eine inzwischen als deprecated markierte Adresse als default-Shipping/Billingadresse eingetragen ist. Wenn ja, wird statt dessen die standard- oder base-Adresse verwendet
++ (wz) neue Methode getValidatedAddressId() in feCustomer.
+
+v0.0.11:
+-------
++ (wz) pi1: Sonderfallbehandlung: eingeloggter FE User, aber noch kein Kunde: Wir übernehmen die Userdaten in das neugebaute Kundenobjekt und machen dann normal weiter
++ (wz) tx_ptgsauserreg_gsansch::__construct()  unbenutzten 2. Parameter entfernt
++ (wz) im gsaSpecialsAccessor die Methoden country2ISO() und country2GSA() so erweitert, dass Länder die nicht in der px_laender Tabelle stehen in GSA ADRESSE den ISO 3166-3 Ländercode eingetragen bekommen
++ (wz) cleanup: plugin wizicons entfernt
+
+v0.0.10dev2:
+----------
++ (wz) gsansch Adressen enthalten jetzt ein "deprecated"-Feld, entsprechende
+        Methoden dazu gibts natürlich auch.
+        Der Button "Adresse löschen" im pi4 markiert die Adresse jetzt als
+        "deprecated" statt sie tatsächlich zu löschen; deprecated-Adressen
+        können genauso wie andere verwendet werden, tauchen aber in der Auswahl
+        von Adressen nicht mehr als Vorschlag auf.
+        Hat der User die zu "löschende" Adresse als default-Shipping/Billing-
+        Adresse eingetragen, wird der default auf die Stammadresse zurückgesetzt
+
+v0.0.10dev1:
+----------
++ (dr) ich habe in pt_gsauserreg Änderungen eingcheckt, die vor allem den KreditLimit für das Customer Objekt betreffen.
+  + neue Properties gsa_creditLimit und gsa_outstandingAmount mit getter und setter Methoden
+  + neue Methoden
+    setCreditLimit($creditLimit double) setzt creditLimit und updated GSA Datenbank
+    getOutstandingAmount() returns double gibt den offenstehenden Gesamtbetrag des Kunden zurück
++ (rk) Bugfix in tx_ptgsauserreg_customerAccessor::createCustomerRecords(): getNextId()-Aufruf mit 2. Param $minKundNr ergänzt
++ (rk) tx_ptgsauserreg_customer::PM_DEBIT geändert
++ (rk) doc/px_laender.sql und doc/px_ZahlArtNeu.sql hinzugefügt
++ (wz) diverse Updates in class.tx_ptgsauserreg_pi1.php, res/class.tx_ptgsauserreg_customer.php, 
+        res/class.tx_ptgsauserreg_customerAccessor.php, res/class.tx_ptgsauserreg_feCustomer.php
++ (rk) Accessor-Klassen: alle Aufrufe von $GLOBALS['TSFE']->cObj->enableFields() ersetzt durch tx_pttools_div::enableFields()
++ (wz/dr): "Die neueste Version der pt_gsauserreg erlaubt es, über den constant editor verschlüsselte Kennwörter anzufordern. Falls das gesetzt ist,
+  werden Kennwörter als md5-Hash mit einem zufälligen salt gespeichert. Vorhandene Kennwörter werden beim nächsten Update des Benutzerdatensatzes
+  verschlüsselt gespeichert."
++ (rk) ext_emconf.php: Hinweis auf ktoblzcheck eingetragen
++ (fb) tx_ptgsauserreg_gsansch: neue Methode getAddressLabel(), korrigiert von rk
+
+

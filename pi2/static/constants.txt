@@ -1,0 +1,53 @@
+/* 
+ * $Id: constants.txt,v 1.6 2009/11/20 10:50:35 ry25 Exp $
+
+possible subcategories: 
+----------------------
+enable	    Used for options that enable or disable primary functions of a template
+dims		Dimensions of all kinds; pixels, widths, heights of images, frames, cells and so on.
+file		Files like background images, fonts and so on. Other options related to the file may also enter
+typo		Typography and related constants
+color		Color setup. Many colors will be found with related options in other categories though.
+links		Links: Targets typically
+language	Language specific options.
+Subcategories based on the default content elements:
+cheader,cheader_g,ctext,ctextpic,cimage,cbullets,ctable,cuploads,cmultimedia,cmailform,csearch,clogin,csplash,cmenu,cshortcut,clist,cscript,chtml
+These are all categories reserved for options that relate to content rendering for each type of tt_content element. See static_template "content (default)" and "styles.content (default)" for examples.
+
+possible data types (type=):
+---------------------------
+int [low-high]		        integer, opt. in range "low" to "high"
+int+  				        positive integer
+offset	[L1,L2,...L6]		comma-separated integers. Default is "x,y", but as comma separated parameters in brackets you can specify up to 6 labels being comma separated! If you wish to omit one of the last 4 fields, just don't enter a label for that element.
+color				        HTML color
+wrap				        HTML-code that is wrapped around some content.
+options [item1,item2,...]	Selectbox with values/labels item1, item2 etc. Commaseparated. Split by "=" also and in that case, first part is label, second is value
+boolean [truevalue]		    Boolean, opt. you can define the value of "true", def.=1
+comment 			        Boolean, checked= "", not-checked = "#".
+file [ext-list/IMAGE_EXT]	Selectorbox with resources. Opt. list allowed extensions (no space in list!), eg. "[ttf]" or "[txt,html,htm]". You can also enter "[IMAGE_EXT]" in which case the default image-extensions are listed. (used for datatype "imgResouce")
+string (the default)	    Just a string value
+*/
+
+// Configuration for GSA User Registration Extension, accesible through BE constant editor
+plugin.pt_gsauserreg_pi2 {
+
+    // GENERAL EXTENSION SETTINGS: Enable Features
+    
+    # cat=pt_gsauserreg_pi2::User Data/enable/010; type=file[html,htm,tmpl,tpl,txt]; label=Plugin template file: The template file to be used for user data management (template for formTemplateHandler).
+	templateFile = EXT:pt_gsauserreg/pi2/template.html
+	
+    # cat=pt_gsauserreg_pi2::User Data/enable/020; type=string; label=next Page: TYPO3 PID or alias of the page to be reached after this one. Optional constant, if you want to go to a special page after user Registration. If no page is specified the home page will be shown.
+	nextPage = 
+    
+    # cat=pt_gsauserreg_pi2::User Data/other/100; type=boolean; label=Require phone number: phone number is a required input on registration
+	requirePhone = 0
+    
+    # cat=pt_gsauserreg_pi2::User Data/enable/100; type=boolean; label=Temporary User: Temporary User will be geenrated.   
+    temporaryUser = 0
+
+    # cat=pt_gsauserreg_pi2::User Data/enable/020; type=string; label=Prefix username: Prefix for generated username which is only used if temporaryUser is true (see above option)
+    prefixUsername = zzzTmpU
+    
+    # cat=pt_gsauserreg_pi2::User Data/enable/020; type=string; label=Inherit groups: If a new user is created, inherit the groups from the creator to the new user if the groups are defined here (comma separated list).
+    inheritGroups = 0  
+}

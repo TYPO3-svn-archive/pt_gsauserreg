@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>Administration Interface search form template</title>
+    <!-- $Id: template.html,v 1.5 2007/07/31 11:33:40 ry96 Exp $ -->
+  </head>
+
+  <body>
+
+<!-- ###SEARCHFORM### begin -->
+
+<form name="search_form" method="POST" action="###FORMACTION###">
+	###ITEMUSERNAME###
+	###ITEMCOMPANY###
+	###ITEMFIRSTNAME###
+	###ITEMLASTNAME###
+	###ITEMSTREETANDNO###
+	###ITEMZIP###
+	###ITEMCITY###
+	###ITEMEMAIL1###
+	###ITEMEXACTMATCH###
+
+<div class="tx_pttoolsButton">###ITEMSUBMIT### ###ITEMRESET###</div>
+</form>
+
+<!-- ###SEARCHFORM### end -->
+
+<!-- ###SELECTFORM### begin -->
+
+<form name="user_form" method="POST" action="###FORMACTION###">
+  <input type="hidden" name="tx_ptgsauserreg_pi2[backURL]" value="###BACKURL###" />
+	###ITEMSELECTEDID###
+
+  <div class="tx_pttoolsButton">###ITEMSUBMIT### ###ITEMBACK###</div>
+</form>
+
+<!-- ###SELECTFORM### end -->
+
+  </body>
+</html>

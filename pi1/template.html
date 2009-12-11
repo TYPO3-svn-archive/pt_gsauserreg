@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <title>Customer data form template</title>
+    <!-- $Id: template.html,v 1.31 2008/08/22 09:32:57 ry96 Exp $ -->
+  </head>
+
+  <body>
+
+<!-- ###ADDRESSFORM### begin -->
+
+<form name="customer_form" method="POST" action="###FORMACTION###">
+  <fieldset>
+    <legend>###SECTIONLABELCUSTOMER###</legend>
+	<input type="hidden" name="tx_ptgsauserreg_pi1[backURL]" value="###BACKURL###" />
+	###ITEMCOMPANY###
+	###ITEMEUVATID###
+	###ITEMSALUTATION###
+	###ITEMTITLE###
+	###ITEMFIRSTNAME###
+	###ITEMLASTNAME###
+	###ITEMBIRTHDATE###
+  </fieldset>
+  
+  <fieldset>
+    <legend>###SECTIONLABELSNAILMAIL###</legend>
+    <fieldset>
+      <legend>###SECTIONLABELSTREETADDR###</legend>
+	###ITEMSTREETANDNO###
+	###ITEMADDRSUPPLEMENT###
+	###ITEMZIP###
+	###ITEMCITY###
+	###ITEMSTATE###
+	###ITEMCOUNTRY###
+    </fieldset>
+    <fieldset>
+      <legend>###SECTIONLABELPOBOX###</legend>
+	###ITEMPOBOX###
+	###ITEMPOBOXZIP###
+    </fieldset>
+  </fieldset>
+
+  <fieldset>
+    <legend>###SECTIONLABELMEDIA###</legend>
+	###ITEMPHONE1###
+	###ITEMPHONE2###
+	###ITEMFAX1###
+	###ITEMFAX2###
+	###ITEMMOBILE1###
+	###ITEMMOBILE2###
+	###ITEMEMAIL1###
+	###ITEMEMAIL2###
+	###ITEMURL###
+  </fieldset>
+
+  <div>###FORMEXPLANATION###</div><br />
+
+  <div class="tx_pttoolsButton">###ITEMSUBMIT### ###ITEMBACK###</div>
+</form>
+
+<!-- ###ADDRESSFORM### end -->
+
+<!-- ###POSTMANUFORM### begin -->
+<form name="postmanu_form" method="POST" action="###FORMACTION###">
+  <input type="hidden" name="tx_ptgsauserreg_pi1[backURL]" value="###BACKURL###" />
+<p>###STATICTEXTPOSTINTRO###</p>
+	###ITEMPOST1###
+	###ITEMPOST2###
+	###ITEMPOST3###
+	###ITEMPOST4###
+	###ITEMPOST5###
+	###ITEMPOST6###
+	###ITEMPOST7###
+  <div class="tx_pttoolsButton">###ITEMSUBMIT### ###ITEMREWRITE### ###ITEMBACK###</div>
+</form>
+<!-- ###POSTMANUFORM### end -->
+
+<!-- ###BANKFORM### begin -->
+<form name="bank_form" method="POST" action="###FORMACTION###">
+  <input type="hidden" name="tx_ptgsauserreg_pi1[backURL]" value="###BACKURL###" />
+  <fieldset>
+    <legend>###SECTIONLABELPAYMENTCHOICE###</legend>
+	###ITEMPAYMENTMETHOD###
+  </fieldset>
+  <fieldset>
+    <legend>###SECTIONLABELBANKDATA###</legend>
+	###ITEMBANKACCOUNTHOLDER###
+	###ITEMBANKCODE###
+	###ITEMBANKNAME###
+	###ITEMBANKACCOUNT###
+	###ITEMBANKBIC###
+	###ITEMBANKIBAN###
+  </fieldset>
+
+  <div>###FORMEXPLANATION###</div><br />
+
+  <div class="tx_pttoolsButton">###ITEMSUBMIT### ###ITEMBACK###</div>
+</form>
+<!-- ###BANKFORM### end -->
+
+  </body>
+</html>

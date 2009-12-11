@@ -1,0 +1,8 @@
+plugin.tx_ptgsauserreg_pi2 {
+	templateFile = {$plugin.pt_gsauserreg_pi2.templateFile}
+	nextPage = {$plugin.pt_gsauserreg_pi2.nextPage}
+	requirePhone = {$plugin.pt_gsauserreg_pi2.requirePhone}
+    temporaryUser = {$plugin.pt_gsauserreg_pi2.temporaryUser}
+    prefixUsername = {$plugin.pt_gsauserreg_pi2.prefixUsername}
+    inheritGroups = {$plugin.pt_gsauserreg_pi2.inheritGroups}
+}

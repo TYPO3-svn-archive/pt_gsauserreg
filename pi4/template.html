@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <title>Address data form template</title>
+    <!-- $Id: template.html,v 1.12 2007/07/13 18:48:38 ry96 Exp $ -->
+  </head>
+
+  <body>
+
+<!-- ###SELECTIONFORM### begin -->
+
+<form name="selection_form" method="POST" action="###FORMACTION###">
+  <input type="hidden" name="tx_ptgsauserreg_pi4[backURL]" value="###BACKURL###" />
+  <input type="hidden" name="tx_ptgsauserreg_pi4[return_pivar_name]" value="###RETURNPIVARNAME###" />
+
+<p>###STATICTEXTSELECTINTRO###</p>
+
+  ###ITEMSELECTEDID###
+
+<div class="tx_pttoolsButton">###ITEMSUBMIT### ###ITEMCHOOSE### ###ITEMNEW### ###ITEMDELETE###</div>
+</form>
+
+<!-- ###SELECTIONFORM### end -->
+
+<!-- ###ADDRESSFORM### begin -->
+
+<form name="address_form" method="POST" action="###FORMACTION###">
+  <input type="hidden" name="tx_ptgsauserreg_pi4[backURL]" value="###BACKURL###" />
+  <input type="hidden" name="tx_ptgsauserreg_pi4[return_pivar_name]" value="###RETURNPIVARNAME###" />
+  <fieldset>
+    <legend>###SECTIONLABELNAME###</legend>
+        ###ITEMCOMPANY###
+        ###ITEMSALUTATION###
+		###ITEMTITLE###
+		###ITEMFIRSTNAME###
+		###ITEMLASTNAME###
+  </fieldset>
+  
+  <fieldset>
+    <legend>###SECTIONLABELSNAILMAIL###</legend>
+	###ITEMSTREETANDNO###
+	###ITEMADDRSUPPLEMENT###
+	###ITEMZIP###
+	###ITEMCITY###
+	###ITEMSTATE###
+	###ITEMCOUNTRY###
+  </fieldset>
+
+  <fieldset>
+    <legend>###SECTIONLABELMEDIA###</legend>
+	###ITEMPHONE1###
+	###ITEMMOBILE1###
+	###ITEMFAX1###
+	###ITEMEMAIL1###
+  </fieldset>
+  <div>###FORMEXPLANATION###</div><br />
+
+<div class="tx_pttoolsButton">###ITEMSUBMIT### ###ITEMBACK###</div>
+</form>
+
+<!-- ###ADDRESSFORM### end -->
+
+<!-- ###CONFIRMFORM### begin -->
+
+<form name="confirm_form" method="POST" action="###FORMACTION###">
+  <input type="hidden" name="tx_ptgsauserreg_pi4[backURL]" value="###BACKURL###" />
+  <input type="hidden" name="tx_ptgsauserreg_pi4[return_pivar_name]" value="###RETURNPIVARNAME###" />
+  <fieldset>
+    <legend>###SECTIONLABELLABEL###</legend>
+		###ITEMPOST1###
+		###ITEMPOST2###
+		###ITEMPOST3###
+		###ITEMPOST4###
+		###ITEMPOST5###
+		###ITEMPOST6###
+		###ITEMPOST7###
+  </fieldset>
+
+<div class="tx_pttoolsButton">###ITEMSUBMIT### ###ITEMBACK###</div>
+</form>
+
+<!-- ###CONFIRMFORM### end -->
+
+<!-- ###DISPLAYFORM### begin -->
+
+<form name="display_form" method="POST" action="###FORMACTION###">
+  <input type="hidden" name="tx_ptgsauserreg_pi4[backURL]" value="###BACKURL###" />
+  <input type="hidden" name="tx_ptgsauserreg_pi4[return_pivar_name]" value="###RETURNPIVARNAME###" />
+
+  <fieldset>
+    <legend>###SECTIONLABELLABEL###</legend>
+		###ITEMPOST1###
+		###ITEMPOST2###
+		###ITEMPOST3###
+		###ITEMPOST4###
+		###ITEMPOST5###
+		###ITEMPOST6###
+		###ITEMPOST7###
+  </fieldset>
+
+<div class="tx_pttoolsButton">###ITEMSUBMIT### ###ITEMBACK###</div>
+</form>
+
+<!-- ###DISPLAYFORM### end -->
+
+  </body>
+</html>

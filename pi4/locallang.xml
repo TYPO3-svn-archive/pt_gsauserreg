@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Language labels for plugin &quot;tx_ptgsauserreg_pi4&quot;</description>
+        <type>database</type>
+        <csh_table></csh_table>
+        <labelContext type="array">
+        </labelContext>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="st_selectintro">Please choose from selection</label>
+            <label index="fl_selectedId">Address</label>
+            <label index="msg_addAddress">- add another address -</label>
+            <label index="bl_submit">Submit</label>
+            <label index="sl_name">Name</label>
+            <label index="fl_company">Company</label>
+            <label index="fl_salutation">Salutation</label>
+            <label index="fc_salutation_count">2</label>
+            <label index="fc_salutation_1">Mr.</label>
+            <label index="fc_salutation_2">Mrs.</label>
+            <label index="fei_salutation">e.g.</label>
+            <label index="fl_title">Title</label>
+            <label index="fc_title_count">5</label>
+            <label index="fc_title_1">PhD</label>
+            <label index="fc_title_2">BA</label>
+            <label index="fc_title_3">MD</label>
+            <label index="fc_title_4">DD</label>
+            <label index="fc_title_5">Esq.</label>
+            <label index="fei_title">e.g.</label>
+            <label index="fl_firstname">First name</label>
+            <label index="fl_lastname">Last name</label>
+            <label index="sl_snailmail">Snail mail</label>
+            <label index="fl_streetAndNo">Street / Nr.</label>
+            <label index="fl_addrSupplement">Address Supplement</label>
+            <label index="fl_zip">Postal code</label>
+            <label index="fl_city">City</label>
+            <label index="fl_state">State</label>
+            <label index="fl_country">Country</label>
+            <label index="sl_media">communication media</label>
+            <label index="fl_phone1">Telephone</label>
+            <label index="fl_fax1">Telefax</label>
+            <label index="fl_mobile1">Mobile phone</label>
+            <label index="fl_email1">Email address</label>
+            <label index="sl_label">Posting Label</label>
+            <label index="fl_post1">Mail delivery</label>
+            <label index="fl_post2">(cont.)</label>
+            <label index="fl_post3">(cont.)</label>
+            <label index="fl_post4">(cont.)</label>
+            <label index="fl_post5">(cont.)</label>
+            <label index="fl_post6">(cont.)</label>
+            <label index="fl_post7">(cont.)</label>
+            <label index="bl_submit_AddressForm">Update Posting Label</label>
+            <label index="msg_comp_or_name">Company or Lastname required</label>
+            <label index="bl_back">Back</label>
+            <label index="bl_submit_ConfirmForm">Store Posting Label</label>
+            <label index="msg_no_base_modify">This posting label is based on customer address and can not be changed here</label>
+            <label index="bl_submit_DisplayForm">Modify a copy</label>
+            <label index="msg_explain_required">designates required field</label>
+            <label index="bl_choose">Use selected address</label>
+            <label index="bl_submit_SelectionForm">Modify selected address</label>
+            <label index="bl_new_SelectionForm">Add a new address</label>
+            <label index="bl_delete">Delete selected address</label>
+            <label index="msg_no_base_del">Posting label for customers main address can not be deleted</label>
+            <label index="msg_no_next_page">No page defined to go!</label>
+            <label index="msg_no_user_logged_in">No User Logged in!</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="st_selectintro">Bitte aus der Liste auswählen</label>
+            <label index="fl_selectedId">Adresse</label>
+            <label index="msg_addAddress">- weitere Adresse hinzufügen -</label>
+            <label index="bl_submit">Absenden</label>
+            <label index="sl_name">Name</label>
+            <label index="fl_company">Firma</label>
+            <label index="fl_salutation">Anrede</label>
+            <label index="fc_salutation_count">2</label>
+            <label index="fc_salutation_1">Herr</label>
+            <label index="fc_salutation_2">Frau</label>
+            <label index="fei_salutation">z.B.</label>
+            <label index="fl_title">Titel</label>
+            <label index="fc_title_count">4</label>
+            <label index="fc_title_1">Dr.</label>
+            <label index="fc_title_2">Prof.</label>
+            <label index="fc_title_3">Prof. Dr.</label>
+            <label index="fc_title_4">Dipl. Ing.</label>
+            <label index="fei_title">z.B.</label>
+            <label index="fl_firstname">Vorname</label>
+            <label index="fl_lastname">Nachname</label>
+            <label index="sl_snailmail">Anschrift</label>
+            <label index="fl_streetAndNo">Strasse / Hausnr.</label>
+            <label index="fl_addrSupplement">Adresszusatz</label>
+            <label index="fl_zip">PLZ</label>
+            <label index="fl_city">Ort</label>
+            <label index="fl_state">Bundesstaat</label>
+            <label index="fl_country">Land</label>
+            <label index="sl_media">Telekontakte</label>
+            <label index="fl_phone1">Telefon</label>
+            <label index="fl_fax1">Telefax</label>
+            <label index="fl_mobile1">Handy</label>
+            <label index="fl_email1">Email Adresse</label>
+            <label index="sl_label">Adressaufkleber</label>
+            <label index="fl_post1">Postanschrift</label>
+            <label index="fl_post2">( &quot; )</label>
+            <label index="fl_post3">( &quot; )</label>
+            <label index="fl_post4">( &quot; )</label>
+            <label index="fl_post5">( &quot; )</label>
+            <label index="fl_post6">( &quot; )</label>
+            <label index="fl_post7">( &quot; )</label>
+            <label index="bl_submit_AddressForm">Adressaufkleber aktualisieren</label>
+            <label index="msg_comp_or_name">Firma und/oder Nachname benötigt</label>
+            <label index="bl_back">Zurück</label>
+            <label index="bl_submit_ConfirmForm">Adressaufkleber speichern</label>
+            <label index="msg_no_base_modify">Adressaufkleber zur Haupt-Kundenadresse kann hier nicht geändert werden</label>
+            <label index="bl_submit_DisplayForm">Kopie bearbeiten</label>
+            <label index="msg_explain_required">Markierung für Pflichtfeld</label>
+            <label index="bl_choose">Gewählte Adresse verwenden</label>
+            <label index="bl_submit_SelectionForm">Diese Adresse modifizieren</label>
+            <label index="bl_new_SelectionForm">Weitere Adresse hinzufügen</label>
+            <label index="bl_delete">Gewählte Adresse löschen</label>
+            <label index="msg_no_base_del">Haupt-Kundenadresse kann nicht gelöscht werden</label>
+            <label index="msg_no_next_page">Keine weiterführende Seite angegeben.</label>
+            <label index="msg_no_user_logged_in">Kein Benutzer angemeldet!</label>
+        </languageKey>
+    </data>
+</T3locallang>

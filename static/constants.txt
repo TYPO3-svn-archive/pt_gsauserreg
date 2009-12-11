@@ -1,0 +1,110 @@
+/* 
+ * $Id: constants.txt,v 1.22 2009/01/09 12:31:17 ry96 Exp $
+
+possible subcategories: 
+----------------------
+enable	    Used for options that enable or disable primary functions of a template
+dims		Dimensions of all kinds; pixels, widths, heights of images, frames, cells and so on.
+file		Files like background images, fonts and so on. Other options related to the file may also enter
+typo		Typography and related constants
+color		Color setup. Many colors will be found with related options in other categories though.
+links		Links: Targets typically
+language	Language specific options.
+Subcategories based on the default content elements:
+cheader,cheader_g,ctext,ctextpic,cimage,cbullets,ctable,cuploads,cmultimedia,cmailform,csearch,clogin,csplash,cmenu,cshortcut,clist,cscript,chtml
+These are all categories reserved for options that relate to content rendering for each type of tt_content element. See static_template "content (default)" and "styles.content (default)" for examples.
+
+possible data types (type=):
+---------------------------
+int [low-high]		        integer, opt. in range "low" to "high"
+int+  				        positive integer
+offset	[L1,L2,...L6]		comma-separated integers. Default is "x,y", but as comma separated parameters in brackets you can specify up to 6 labels being comma separated! If you wish to omit one of the last 4 fields, just don't enter a label for that element.
+color				        HTML color
+wrap				        HTML-code that is wrapped around some content.
+options [item1,item2,...]	Selectbox with values/labels item1, item2 etc. Commaseparated. Split by "=" also and in that case, first part is label, second is value
+boolean [truevalue]		    Boolean, opt. you can define the value of "true", def.=1
+comment 			        Boolean, checked= "", not-checked = "#".
+file [ext-list/IMAGE_EXT]	Selectorbox with resources. Opt. list allowed extensions (no space in list!), eg. "[ttf]" or "[txt,html,htm]". You can also enter "[IMAGE_EXT]" in which case the default image-extensions are listed. (used for datatype "imgResouce")
+string (the default)	    Just a string value
+*/
+
+// Configuration for GSA User Registration Extension, accesible through BE constant editor
+config.pt_gsauserreg {
+
+    // GENERAL EXTENSION SETTINGS: Enable Features
+    
+    # cat=pt_gsauserreg::general/enable/010; type=int+; label=FE users sysfolder PID: TYPO3 PID (Page ID, no alias here!) of your FE users sysfolder.
+	feusersSysfolderPid = 
+    
+    # cat=pt_gsauserreg::general/enable/012; type=int+; label=FE group uid for GSA usergroup: The Default fe_group uid for all registered GSA users.
+    defaultGroup = 1
+    
+    # cat=pt_gsauserreg::general/other/014; type=int+; label=FE group uid for privileged users: Additional FE groups uid for privileged users. This constant is only useful if 'One FE user per customer' is set to false (see above). In this case the first FE user which is generated during registration, is set to privileged.
+    privilegedGroup =
+    
+    # cat=pt_gsauserreg::general/other/016; type=int+; label=FE group uid for new customers: Additional FE groups uid for new customers.
+    newCustGroup = 
+	
+    # cat=pt_gsauserreg::general/other/020; type=string; label=CountryCode of system location: ISO-3166 CountryCode of Country where system is located.
+	hostCountry = DE
+	
+    # cat=pt_gsauserreg::general/other/030; type=string; label=LanguageCode of system location: ISO LanguageCode of Country where system is located.
+	hostLanguage = de
+	
+    # cat=pt_gsauserreg::general/other/040; type=string; label=Allowed countries for regforms: Comma-separated list of countries that we allow online registrations from (empty list for all countries) in ISO-3166.
+	allowedCountries = DE,AT,CH
+	
+    # cat=pt_gsauserreg::general/other/045; type=int [10000-69999]; label=fixed Debitor No: Give all users this DEBITOR.DEBINR instead of individual values. If not specified the Debitor Number will be the same as the Costumer Number. The number depends if you are using the the DATEV Interface of the ERP-System. 
+	fixedDebitor = 10000 
+	
+    # cat=pt_gsauserreg::general/other/048; type=boolean; label=Enable EU VAT Id check: European VAT Id given by customer will be checked (for German customers only a syntactical check could be provided). This option is only useful if you have a German Vat ID. 
+	euVatIdCheck = 0
+	
+    # cat=pt_gsauserreg::general/other/049; type=boolean; label=Hide Birthdate field: Hide the birthdate field from the customer registration form. Usefull if you are not interested in the birthdate.
+	hideBirtdate = 0
+	
+    # cat=pt_gsauserreg::general/other/050; type=boolean; label=Enable bank data editing: Allow editing of banking data in customer record
+	editBanking = 1
+	
+    # cat=pt_gsauserreg::general/other/051; type=boolean; label=Enable check bank data: Check account number and bank codes of German banks (Only if German customer). Therefore the External software ktoblzcheck, see http://ktoblzcheck.sourceforge.net has to be installed on your server.
+	checkBanking = 0
+	
+    # cat=pt_gsauserreg::general/other/052; type=string; label=Path to check bank data: Path to command for checking bank data (Only if above Constant is true).
+	pathCheckBanking = /usr/local/bin/
+
+    # cat=pt_gsauserreg::general/other/054; type=string; label=Countries for direct debit: Comma-separated list of countries where customer can pay by direct debit in ISO-3166.
+	debitCountries = DE
+	
+    # cat=pt_gsauserreg::general/other/055; type=boolean; label=Enable CreditCard payments: Customer can choose to pay per CreditCard. The shop now supports Credit Card Clearing with heidelpay. Therefore you have to install the pt_heidelpay Extension and get an account from this clearing company (see Manual of extension pt_heidelpay). 
+	ccAllow = 0
+	
+    # cat=pt_gsauserreg::general/other/056; type=boolean; label=Always allow Invoice: All Customers can choose to pay per Invoice.
+	invoiceAlways = 0
+	
+    # cat=pt_gsauserreg::general/other/057; type=boolean; label=Inland Business Customers can pay per Invoice (there is no frontend plugin where we can set this type of customer at this time, to do it by hand the PRBRUTTO flag has set to 0 in the KUNDE Record of the GSA database via phpMyAdmin).
+	invoiceBusiness = 1
+	
+    # cat=pt_gsauserreg::general/other/058; type=boolean; label=Allow Invoice with EuVatId: Customers with a valid EU Vat ID can pay per Invoice
+	invoiceEuvatid = 0
+	
+    # cat=pt_gsauserreg::general/other/059; type=boolean; label=Always VAT: Invoices include VAT even for foreign customers
+	alwaysVAT = 0
+	
+    # cat=pt_gsauserreg::general/other/060; type=boolean; label=One FE user per customer: Use only one (non-editable) fe_user per customer
+	miniCustUser = 0
+	
+    # cat=pt_gsauserreg::general/other/070; type=boolean; label=Enable automatic login: After finishing the Registration new users are automatically logged in.
+	autoLogin = 1
+    
+    # cat=pt_gsauserreg::general/other/080; type=boolean; label=Use encrypted passwords: FE Users get encrypted passwords (salted md5).
+	cryptPw = 0
+    
+    # cat=pt_gsauserreg::general/other/110; type=int[0-1000000]; label=Minimal GSA Cust.No.: Lowest value to start with GSA customer numbers (used in GSA-DB-Tables KUNDNR, DEBINR) for this extension. If the extension is used with the ERP System and you didn't set fixedDebitor it could be reasonable to start with a higher value, if you have additional customers which are not registered with pt_gsauserreg in the ERP System or if you use the DATEV Interface in the ERP System (10000-69999, see description of fixedDebitor).
+	minKundNr = 1
+    
+    # cat=pt_gsauserreg::general/other/120; type=int[0-99999999]; label=Maximal GSA Cust.No.: Highest value to stop with GSA customer numbers (used in GSA-DB-Tables KUNDNR, DEBINR) for this extension.  If the extension is used with the ERP System and fixedDebitor isn't set, it could be necessary to end with a lower value, especially if you use the DATEV Interface (10000-69999).
+	maxKundNr = 99999999
+    
+    # cat=pt_gsauserreg::general/other/130; type=string; label=Default CreditLimit: Default Credit Limit for Customer stored in GSA database. Type is string because double is not a valid type. If nothing is specified, there is no Credit Limit.
+	defaultCreditLimit = 
+}
