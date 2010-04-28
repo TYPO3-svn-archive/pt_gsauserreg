@@ -504,7 +504,7 @@ class tx_ptgsauserreg_gsanschAccessor extends tx_ptgsasocket_gsaDbAccessor {
         // exec query using TYPO3 DB API
 		if ($anschid == 0) {
 			// insert new ANSCH record
-			$dataArray['anschid'] = $this->getNextId('ANSCH');
+			$dataArray['anschid'] = $this->getNextId($this->getTableName('ANSCH'));
 			$updateFieldsArr['NUMMER'] = intval($dataArray['anschid']);
         	$res = $this->gsaDbObj->exec_INSERTquery($table, $updateFieldsArr);
         	if ($res == false) {
