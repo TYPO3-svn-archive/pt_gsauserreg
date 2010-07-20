@@ -21,7 +21,7 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
-/** 
+/**
  * Class for customer objects in the pt_hosting framework
  *
  * $Id: class.tx_ptgsauserreg_customer.php,v 1.55 2009/11/24 13:25:45 ry25 Exp $
@@ -29,11 +29,11 @@
  * @author	Wolfgang Zenker <zenker@punkt.de>
  * @since   2006-03-30
  */
-  
- /**
+
+/**
  * [CLASS/FUNCTION INDEX of SCRIPT]
  */
-  
+
 /**
  * Inclusion of punkt.de libraries
  */
@@ -43,6 +43,7 @@ require_once t3lib_extMgm::extPath('pt_gsauserreg').'res/class.tx_ptgsauserreg_l
 require_once t3lib_extMgm::extPath('pt_tools').'res/staticlib/class.tx_pttools_debug.php'; // debugging class with trace() function
 require_once t3lib_extMgm::extPath('pt_tools').'res/objects/class.tx_pttools_exception.php'; // general exception class
 require_once t3lib_extMgm::extPath('pt_tools').'res/abstract/class.tx_pttools_address.php'; // general address helper class
+require_once t3lib_extMgm::extPath('pt_tools').'res/abstract/class.tx_pttools_iTemplateable.php';
 require_once t3lib_extMgm::extPath('pt_gsauserreg').'res/class.tx_ptgsauserreg_gsaSpecialsAccessor.php'; // GSA specific stuff
 
 /**
@@ -54,8 +55,8 @@ require_once t3lib_extMgm::extPath('pt_gsauserreg').'res/class.tx_ptgsauserreg_g
  * @package     TYPO3
  * @subpackage  tx_ptgsauserreg
  */
-class tx_ptgsauserreg_customer extends tx_pttools_address {
-    
+class tx_ptgsauserreg_customer extends tx_pttools_address implements tx_pttools_iTemplateable {
+
 	/**
 	 * Constants
 	 */
@@ -84,7 +85,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     protected $priceGroup = 1;	// customer gets price from this group
     protected $birthdate = '';    // birthday (persons only)
     protected $lob = '';          // line of business (company only)
-    
+
     // additional address fields, normally set from standard address
     protected $postmanu = 0;      // manual postal address in next fields
                                 // normally the postal address is automatically
@@ -101,7 +102,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     // payment data fields
     protected $paymentMethod = ''; // default payment method of customer
     protected $bankAccountHolder = ''; // Holder of bank account
-    protected $bankName = ''; // Name of bank  
+    protected $bankName = ''; // Name of bank
     protected $bankCode = ''; // national bank code
     protected $bankAccount = ''; // account number
     protected $bankBIC = ''; // international bank code
@@ -110,7 +111,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     protected $ccNumber = ''; // credit card number
     protected $ccExpiry = ''; // credit card expiry date
     protected $ccHolder = ''; // credit card name of card holder
-     
+
 	// ERP specific properties
 	protected $gsa_tagnetto = self::DEB_TAGNETTO;	// days until invoice is payable
     protected $gsa_creditLimit;     // (double) credit Limit for Customer
@@ -131,62 +132,78 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
 	// derived properties
 	protected $isForeigner = 0;	// is foreign customer
 	protected $isEUForeigner = 0;	// is foreign customer from EU country
-    
-	
-	
+
+
+
 	/***************************************************************************
      *   CONSTRUCTOR & OBJECT HANDLING METHODS
      **************************************************************************/
-    
+
 	/**
      * Class constructor - fills object's properties with param array data
      *
      * @param   integer     (optional) ID of the GSA-DB address record (ADRESSE.NUMMER). Set to 0 if you want to use the 2nd param.
      * @param   array       Array containing address data to set as address object's properties; array keys have to be named exactly like the proprerties of this class and it's parent class (see tx_ptgsauseracc_address::setAddressFromGivenArray() for used properties). This param has no effect if the 1st param is set to something other than 0.
-     * @return	void   
-     * @throws  tx_pttools_exception   if the first param is not numeric  
+     * @return	void
+     * @throws  tx_pttools_exception   if the first param is not numeric
      * @see     tx_ptgsauseracc_customer::setCustomerFromGivenArray()
      * @author  Rainer Kuhn, Wolfgang Zenker <t3extensions@punkt.de>
      * @since   2006-04-10
      */
 	public function __construct($customerId=0, $customerDataArr=array()) {
-    
+
         trace('***** Creating new '.__CLASS__.' object. *****');
-        
+
         if (!is_numeric($customerId)) {
             throw new tx_pttools_exception('Parameter error', 3, 'First parameter for '.__CLASS__.' constructor is not numeric');
         }
-        
+
         // if a customer record ID is given, retrieve customer array from database accessor (and overwrite 2nd param)
         if ($customerId > 0) {
             $customerDataArr = tx_ptgsauserreg_customerAccessor::getInstance()->selectCustomerData($customerId);
         }
-        
+
         $this->setCustomerFromGivenArray($customerDataArr);
 		$this->isCorporate = !($this->isForeigner || $this->gsa_prbrutto);
 		if ($this->postEmpty()) {
 			$this->rewritePostFields();
 		}
-           
+
         trace($this);
-        
+
     }
-    
-    
+
+	/***************************************************************************
+	 * Methods implementing the "tx_pttools_iTemplateable" interface
+	 **************************************************************************/
+
+	/**
+	 * Returns a marker array
+	 *
+	 * @param   void
+	 * @return  array
+	 * @author  Simon Schaufelberger <schaufelberger@punkt.de>
+	 * @since   2010-07-15
+	 */
+	public function getMarkerArray() {
+		return $this->getDataArray();
+	}
+
+
     /***************************************************************************
      *   GENERAL METHODS
      **************************************************************************/
-    
+
     /**
      * Sets the customer properties using data given by param array
      *
      * @param   array     Array containing customer data to set as customer object's properties; array keys have to be named exactly like the proprerties of this class and it's parent class.
-     * @return  void        
+     * @return  void
      * @author  Rainer Kuhn, Wolfgang Zenker <t3extensions@punkt.de>
      * @since   2005-12-23
      */
     protected function setCustomerFromGivenArray($customerDataArr) {
-        
+
 		foreach (get_class_vars( __CLASS__ ) as $propertyname => $pvalue) {
 			if (isset($customerDataArr[$propertyname])) {
 				$setter = 'set_'.$propertyname;
@@ -194,12 +211,12 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
 			}
 		}
     }
-    
+
     /**
      * returns array with data from all properties
      *
      * @param   void
-     * @return  array	array with data from all properties        
+     * @return  array	array with data from all properties
      * @author  Rainer Kuhn, Wolfgang Zenker <t3extensions@punkt.de>
      * @since   2005-12-23
      */
@@ -214,13 +231,13 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
 
 		return $dataArray;
 	}
-        
+
     /**
      * Stores current customer data in GSA-DB
 	 * if gsauid is non-zero, these records are updated;
 	 * otherwise new records are created
 	 *
-     * @param   void        
+     * @param   void
      * @return  void
      * @author  Wolfgang Zenker <zenker@punkt.de>
      * @since   2006-04-20
@@ -229,9 +246,9 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
 
 		$dataArray = $this->getDataArray();
         $this->gsauid = tx_ptgsauserreg_customerAccessor::getInstance()->storeCustomerData($dataArray);
-        
+
 	}
-        
+
     /**
      * Returns the full name of customer
      * If customer is a company, use company property,
@@ -241,94 +258,94 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
 	 *
      * @param   boolean     flag wether the full a natural persons name should be returned in reverse order ('Lastname, Firstname')
      * @return  string      full name
-     * @global  
+     * @global
      * @author  Wolfgang Zenker <zenker@punkt.de>
      * @since   2006-04-10
      */
     public function getFullName($inverseOrder=0) {
-        
+
         if ($this->company) {
             $fullName = $this->company;
 		} else {
         	$fullName = parent::getFullName($inverseOrder);
 		}
         return $fullName;
-        
+
     }
-    
+
     /**
      * Returns the address label composed from all "post" fields
      *
-     * @param   string      (optional) line delimiter (Default: '<br />') 
+     * @param   string      (optional) line delimiter (Default: '<br />')
      * @param   boolean     (optional) use XSS prevention for "post" field content (Default: 1); set to 0 only for plain text usage!
      * @return  string      address label
      * @author	Fabrizio Branca <branca@punkt.de>
      * @since 	2007-10-11
      */
     public function getAddressLabel($delimiter='<br />', $useXssPrevention=1){
-        
+
         $address = array();
-        
+
         for ($i=1; $i<=7; $i++) {
             $getter = 'get_post'.$i;
             $tmp = ($useXssPrevention == 0 ? $this->$getter() : tx_pttools_div::htmlOutput($this->$getter()));
-            if ($tmp) { 
+            if ($tmp) {
                 $address[] = $tmp;
             }
         }
-        
-        return implode($delimiter, $address);   
-        
+
+        return implode($delimiter, $address);
+
     }
-    
+
     /**
      * Customer is a national customer and gets gross price
 	 *
-     * @param   void        
+     * @param   void
      * @return  bool
-     * @global  
+     * @global
      * @author  Wolfgang Zenker <zenker@punkt.de>
      * @since   2006-09-19
      */
     public function isNationalGrossPriceCust() {
-        
+
 		$result = true;
-        
+
 		if ($this->isForeigner || ! $this->gsa_prbrutto) {
 			$result = false;
 		}
         return $result;
     }
-    
+
     /**
      * Customer is legitimized to see net price
 	 *
-     * @param   void        
+     * @param   void
      * @return  bool
-     * @global  
+     * @global
      * @author  Wolfgang Zenker <zenker@punkt.de>
      * @since   2006-09-19
      */
     public function getNetPriceLegitimation() {
-        
+
 		$result = ! $this->isNationalGrossPriceCust();
-        
+
         return $result;
     }
-    
+
     /**
      * Customer is not charged VAT
 	 *
-     * @param   void        
+     * @param   void
      * @return  bool
-     * @global  
+     * @global
      * @author  Wolfgang Zenker <zenker@punkt.de>
      * @since   2006-09-19
      */
     public function getTaxFreeLegitimation() {
-        
+
 		$result = false;
-        
+
 		if (! tx_ptgsauserreg_lib::getGsaUserregConfig('alwaysVAT')) {
 			if ($this->isEUForeigner) {
 				$result = ! empty($this->euVatId);
@@ -344,14 +361,14 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * checks if post1-7 properties are empty
 	 *
-     * @param   void        
+     * @param   void
      * @return  boolean
      * @author  Wolfgang Zenker <zenker@punkt.de>
-     * @global  
+     * @global
      * @since   2008-10-02
      */
     protected function postEmpty() {
-        
+
 		$result = true;
 
 		for ($i = 1; $i <= 7; $i++) {
@@ -363,48 +380,48 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
 		}
 		return $result;
     }
- 
+
     /**
      * Overwrites the post1-7 properties with address
      * constructed from other fields and clears postmanu
 	 *
-     * @param   void        
+     * @param   void
      * @return  void
      * @author  Wolfgang Zenker <zenker@punkt.de>
-     * @global  
+     * @global
      * @since   2006-04-21
      */
     public function rewritePostFields() {
-        
+
     	$tsConfig = tx_pttools_div::typoscriptRegistry('plugin.tx_ptgsauserreg_pi1.');
-		
+
     	if((int) $tsConfig['useShortAddressLabelFormat']) {
     		$postArray = $this->getShortAddressLabel();
-    		$this->postmanu = true;     		
+    		$this->postmanu = true;
     	} else {
     		$this->postmanu = false;
     		$postArray = tx_ptgsauserreg_gsaSpecialsAccessor::getInstance()->getPostFields($this);
     	}
-		
+
 		for ($i = 1; $i <= 7; $i++) {
 			$fname = 'post'.$i;
 			$this->$fname = $postArray[$fname];
 		}
     }
- 	
+
     /**
      * get the Address label array in short notation
-     * 
+     *
      * @return array og post fields
      * @author Daniel Lienert <lienert@punkt.de>
      * @since 24.11.2009
      */
     public function getShortAddressLabel() {
     	$postArray = tx_ptgsauserreg_gsaSpecialsAccessor::getInstance()->getPostFields($this);
-    	
+
     	// if this option is set, remove the salutation line (post1)
 		unset($postArray['post1']);
-    	
+
     	foreach($postArray as $postKey => $postValue) {
     		if(substr($postKey,0,4) == 'post') {
 				$newKey = 'post' . ((int) substr($postKey,4) - 1);
@@ -413,34 +430,34 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     			$shortPostArray[$postKey] = $postValue;
     		}
     	}
-    	
+
     	return $shortPostArray;
     }
-    
+
     /**
      * check if the postLabel is in short address notation
-     * 
+     *
      * @return boolean
      * @author Daniel Lienert <lienert@punkt.de>
      * @since 24.11.2009
      */
     public function checkForShortAddressLabel() {
     	$postArray = $this->getShortAddressLabel();
-    	
+
     	for ($i = 1; $i <= 7; $i++) {
 			$fname = 'post'.$i;
 			if($this->$fname != $postArray[$fname]) {
 				return false;
 			}
 		}
-		
+
 		return true;
     }
-    
+
 	/**
 	 * create list of allowed payment choices for this customer
 	 *
-     * @param   void        
+     * @param   void
      * @return  array	list of allowed payment methods
      * @author  Wolfgang Zenker <zenker@punkt.de>
      * @since   2007-03-27
@@ -495,7 +512,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
 	/**
 	 * create list of known payment choices
 	 *
-     * @param   void        
+     * @param   void
      * @return  array	list of known payment methods
      * @author  Wolfgang Zenker <zenker@punkt.de>
      * @since   2007-05-02
@@ -524,7 +541,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * get outstanding amount from GSA and set in property
      *
-     * @param   void        
+     * @param   void
      * @return  double   outstanding amount from GSA
      * @author  Dorit Rottner <rottner@punkt.de>
      * @since   2007-06-14
@@ -540,7 +557,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * get cumulated transaction volume from GSA
      *
-     * @param   void        
+     * @param   void
      * @return  double   cumulated transaction volume from GSA
      * @author  Dorit Rottner <rottner@punkt.de>
      * @since   2007-06-14
@@ -553,9 +570,9 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
 
 
     /**
-     * set creditLimit in customerObject and GSA 
+     * set creditLimit in customerObject and GSA
      *
-     * @param   double   creditLimit from GSA        
+     * @param   double   creditLimit from GSA
      * @return  void
      * @author  Dorit Rottner <rottner@punkt.de>
      * @since   2007-06-20
@@ -602,7 +619,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
      * register payment of financial transaction
      *
      * @param   double  transaction volume
-     * @param   double  discount 
+     * @param   double  discount
      * @return  void
      * @author  Dorit Rottner <rottner@punkt.de>
      * @since   2007-08-29
@@ -617,11 +634,11 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /***************************************************************************
      *   PROPERTY GETTER/SETTER METHODS
      **************************************************************************/
-     
+
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  int      property value
      * @since   2006-04-10
      */
@@ -632,7 +649,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -643,7 +660,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  bool      property value
      * @since   2006-04-10
      */
@@ -654,7 +671,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  bool      property value
      * @since   2008-01-29
      */
@@ -665,7 +682,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  int      property value
      * @since   2006-08-09
      */
@@ -676,7 +693,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -687,18 +704,18 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
     public function get_lob() {
         return $this->lob;
     }
-    
+
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  bool      property value
      * @since   2006-04-10
      */
@@ -709,7 +726,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -720,7 +737,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -731,7 +748,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -742,7 +759,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -753,7 +770,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -764,7 +781,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -775,7 +792,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -787,7 +804,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -798,7 +815,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -809,7 +826,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -820,7 +837,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -833,7 +850,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -846,7 +863,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -857,7 +874,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -868,7 +885,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -879,7 +896,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -890,7 +907,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -901,7 +918,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string      property value
      * @since   2006-04-10
      */
@@ -912,7 +929,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  bool      property value
      * @since   2006-04-21
      */
@@ -923,7 +940,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  bool      property value
      * @since   2006-04-21
      */
@@ -934,7 +951,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  int		property value
      * @since   2006-09-19
      */
@@ -969,7 +986,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string	property value
      * @since   2006-09-19
      */
@@ -980,7 +997,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  bool	property value
      * @since   2006-09-19
      */
@@ -991,7 +1008,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string	property value
      * @since   2006-09-19
      */
@@ -1002,7 +1019,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Returns the property value
      *
-     * @param   void        
+     * @param   void
      * @return  string	property value
      * @since   2007-06-01
      */
@@ -1013,7 +1030,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Set the property value
      *
-     * @param   int        
+     * @param   int
      * @return  void
      * @since   2006-04-10
      */
@@ -1035,7 +1052,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Set the property value
      *
-     * @param   bool        
+     * @param   bool
      * @return  void
      * @since   2006-04-10
      */
@@ -1046,7 +1063,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Set the property value
      *
-     * @param   bool        
+     * @param   bool
      * @return  void
      * @since   2008-01-29
      */
@@ -1057,7 +1074,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Set the property value
      *
-     * @param   int        
+     * @param   int
      * @return  void
      * @since   2006-08-09
      */
@@ -1079,18 +1096,18 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Set the property value
      *
-     * @param   string        
+     * @param   string
      * @return  void
      * @since   2006-04-10
      */
     public function set_lob($lob) {
         $this->lob = (string) $lob;
     }
-    
+
     /**
      * Set the property value
      *
-     * @param   bool        
+     * @param   bool
      * @return  void
      * @since   2006-04-10
      */
@@ -1101,7 +1118,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Set the property value
      *
-     * @param   string        
+     * @param   string
      * @return  void
      * @since   2006-04-10
      */
@@ -1134,7 +1151,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Set the property value
      *
-     * @param   string        
+     * @param   string
      * @return  void
      * @since   2006-04-10
      */
@@ -1145,7 +1162,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Set the property value
      *
-     * @param   string        
+     * @param   string
      * @return  void
      * @since   2006-04-10
      */
@@ -1302,7 +1319,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Set the property value
      *
-     * @param   bool        
+     * @param   bool
      * @return  void
      * @since   2006-04-21
      */
@@ -1316,7 +1333,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Set the property value
      *
-     * @param   bool        
+     * @param   bool
      * @return  void
      * @since   2006-04-21
      */
@@ -1330,7 +1347,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Set the property value
      *
-     * @param   int        
+     * @param   int
      * @return  void
      * @since   2006-09-19
      */
@@ -1365,7 +1382,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Set the property value
      *
-     * @param   string        
+     * @param   string
      * @return  void
      * @since   2006-09-19
      */
@@ -1376,7 +1393,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Set the property value
      *
-     * @param   bool        
+     * @param   bool
      * @return  void
      * @since   2006-09-19
      */
@@ -1387,7 +1404,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Set the property value
      *
-     * @param   string        
+     * @param   string
      * @return  void
      * @since   2006-09-19
      */
@@ -1398,7 +1415,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
     /**
      * Set the property value
      *
-     * @param   string        
+     * @param   string
      * @return  void
      * @since   2007-06-01
      */
@@ -1575,11 +1592,11 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
 	public function set_gsa_dunningLastDate($gsa_dunningLastDate) {
 		$this->gsa_dunningLastDate = (string) $gsa_dunningLastDate;
 	}
-	
+
 	/**
      * Magic method for function call
      * Use the hook inside to add various getter and setter to the customer object
-     * 
+     *
 	 * @param $method		Name of the method to be called
 	 * @param $arguments	Arguments passed to the function
      * @return unknown_type
@@ -1587,7 +1604,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
      * @since 21.08.2009
      */
     public function __call($method, $arguments)	{
-		
+
     	// restrict to getter and setter methods
 		if (!in_array(substr($method, 0, 4),array('get_', 'set_'))) {
 			throw new tx_pttools_exceptionInternal(
@@ -1595,22 +1612,22 @@ class tx_ptgsauserreg_customer extends tx_pttools_address {
 					$method . ' is not allowed here - use getter and setter only.'
 			);
 		}
-    	
+
 	    // HOOK: allow multiple hooks to simulate getter and setter
 		if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['pt_gsauserreg']['customer_hooks']['simulateGetterSetterHook'])) {
 			foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['pt_gsauserreg']['customer_hooks']['simulateGetterSetterHook'] as $className) {
 				$hookObj = &t3lib_div::getUserObj($className);
-				
+
 				if(method_exists($hookObj, $method)) {
 					return $hookObj->$method($this, $arguments);
 				} else {
 					throw new tx_pttools_exceptionInternal('No method defined in the hook to handle the method ' . $method, 'No method defined in the hook to handle the method ' . $method);
 				}
-				
+
 			}
 		} else {
 			throw new tx_pttools_exceptionInternal('No hook defined to handle the method ' . $method, 'No hook defined to handle the method ' . $method);
-		} 	
+		}
     }
 
 
