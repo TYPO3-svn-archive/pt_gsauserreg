@@ -30,7 +30,9 @@ config.pt_gsauserreg {
 	virtualTableCustNo = vtmhKundnr
 	minKundNr = {$config.pt_gsauserreg.minKundNr}
 	maxKundNr = {$config.pt_gsauserreg.maxKundNr}
+	
 	defaultCreditLimit = {$config.pt_gsauserreg.defaultCreditLimit}
+	overrideDefaultPaymentMethod = {$config.pt_gsauserreg.overrideDefaultPaymentMethod}
 
 }
 

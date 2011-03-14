@@ -1434,12 +1434,14 @@ class tx_ptgsauserreg_customer extends tx_pttools_address implements tx_pttools_
      */
     public function set_country($country) {
 
+    	$overrideDefaultPaymentMethod = tx_ptgsauserreg_lib::getGsaUserregConfig('overrideDefaultPaymentMethod');
+    	
 		$firsttime = $this->country == '';
 		if (tx_ptgsauserreg_countrySpecifics::isForeignCountry($country)) {
 			$this->isForeigner = 1;
 			$this->isEUForeigner = tx_ptgsauserreg_countrySpecifics::isEuMember($country);
 			if (! $this->paymentMethod) {
-				$this->paymentMethod = self::PM_CCARD;
+				$this->paymentMethod = $overrideDefaultPaymentMethod ? $overrideDefaultPaymentMethod : self::PM_CCARD;
 			}
 			$this->gsa_prbrutto = false;
 		}
@@ -1447,12 +1449,13 @@ class tx_ptgsauserreg_customer extends tx_pttools_address implements tx_pttools_
 			$this->isForeigner = 0;
 			$this->isEUForeigner = 0;
 			if (! $this->paymentMethod) {
-				$this->paymentMethod = self::PM_DEBIT;
+				$this->paymentMethod = $overrideDefaultPaymentMethod ? $overrideDefaultPaymentMethod : self::PM_DEBIT;
 			}
 			if (! $firsttime) {
 				$this->gsa_prbrutto = ! $this->isCorporate;
 			}
 		}
+		
 		parent::set_country($country);
     }
 

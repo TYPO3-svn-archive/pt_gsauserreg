@@ -107,4 +107,7 @@ config.pt_gsauserreg {
     
     # cat=pt_gsauserreg::general/other/130; type=string; label=Default CreditLimit: Default Credit Limit for Customer stored in GSA database. Type is string because double is not a valid type. If nothing is specified, there is no Credit Limit.
 	defaultCreditLimit = 
+	
+	# cat=pt_gsauserreg::general/other/140; type=string; label=Override default Payment method: Set the default payment method independent from the customers country. Valid choices are: Kreditkarte, Rechnung and DTA-Buchung.
+	overrideDefaultPaymentMethod = 
 }
