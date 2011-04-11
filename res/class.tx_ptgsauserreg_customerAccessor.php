@@ -136,6 +136,7 @@ class tx_ptgsauserreg_customerAccessor extends tx_ptgsasocket_gsaDbAccessor {
         if ($email1 !='') {
             $where   .= ' AND EMAIL1 LIKE \'%'.$GLOBALS['TYPO3_DB']->quoteStr($email1,$from).'%\'';
         }
+		$where .= ' AND KUNDNR IS NOT NULL';	// skip empty/deleted entries
         $groupBy = '';
         $orderBy = $this->getTableName('ADRESSE').'.NUMMER';
         $limit = '';
