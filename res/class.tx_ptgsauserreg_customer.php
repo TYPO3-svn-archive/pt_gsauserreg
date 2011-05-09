@@ -351,7 +351,7 @@ class tx_ptgsauserreg_customer extends tx_pttools_address implements tx_pttools_
 				$result = ! empty($this->euVatId);
 			}
 			else {
-				$result = $this->isForeigner;
+				$result = $this->isForeigner && (! tx_ptgsauserreg_lib::getGsaUserregConfig('specialVAT'));
 			}
 		}
 

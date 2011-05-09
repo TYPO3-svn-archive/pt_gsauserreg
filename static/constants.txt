@@ -90,7 +90,10 @@ config.pt_gsauserreg {
     # cat=pt_gsauserreg::general/other/059; type=boolean; label=Always VAT: Invoices include VAT even for foreign customers
 	alwaysVAT = 0
 	
-    # cat=pt_gsauserreg::general/other/060; type=boolean; label=One FE user per customer: Use only one (non-editable) fe_user per customer
+    # cat=pt_gsauserreg::general/other/060; type=boolean; label=Special VAT: Invoices include VAT except for EU Foreigners with valid EU VAT Id
+	specialVAT = 0
+	
+    # cat=pt_gsauserreg::general/other/065; type=boolean; label=One FE user per customer: Use only one (non-editable) fe_user per customer
 	miniCustUser = 0
 	
     # cat=pt_gsauserreg::general/other/070; type=boolean; label=Enable automatic login: After finishing the Registration new users are automatically logged in.

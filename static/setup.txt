@@ -20,6 +20,7 @@ config.pt_gsauserreg {
 	invoiceBusiness = {$config.pt_gsauserreg.invoiceBusiness}
 	invoiceEuvatid = {$config.pt_gsauserreg.invoiceEuvatid}
 	alwaysVAT = {$config.pt_gsauserreg.alwaysVAT}
+	specialVAT = {$config.pt_gsauserreg.specialVAT}
 	miniCustUser = {$config.pt_gsauserreg.miniCustUser}
 	defaultGroup = {$config.pt_gsauserreg.defaultGroup}
 	privilegedGroup = {$config.pt_gsauserreg.privilegedGroup}
